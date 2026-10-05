@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Biblioteca Visual de Instrumentação Industrial — 80 mapas visuais</title>
+<meta name="description" content="80 mapas visuais em PDF para estudar, revisar e consultar instrumentação industrial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* PERSONALIZE AQUI */
+  --navy:#0F1F3D; --blue:#2F6FDB; --blue-l:#E6EFFC; --green:#1FA45B; --green-d:#178048; --yellow:#FFC21A;
+  --bg:#F5F7FA; --card:#fff; --text:#1B2538; --muted:#5A6781; --line:#DCE3EE; --head:var(--navy);
+  --f-head:'Barlow Condensed','Arial Narrow',Impact,sans-serif; --f-body:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --shadow:0 4px 18px rgba(15,31,61,.07);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#09132A;--card:#12213F;--text:#E8EEF8;--muted:#A5B3CC;--line:#263754;--head:#fff;--blue-l:#1A2D52;--shadow:0 4px 18px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#09132A;--card:#12213F;--text:#E8EEF8;--muted:#A5B3CC;--line:#263754;--head:#fff;--blue-l:#1A2D52;--shadow:0 4px 18px rgba(0,0,0,.35)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-head);text-transform:uppercase;color:var(--head);line-height:1.08;margin:0 0 .5em;font-weight:700;letter-spacing:.01em}
+h1{font-size:clamp(2rem,7vw,3.2rem)} h2{font-size:clamp(1.6rem,5vw,2.3rem)} h3{font-size:1.15rem}
+p{margin:0 0 1em}
+section{padding:56px 20px;text-align:center}
+.wrap{max-width:960px;margin:0 auto}
+.seal{display:inline-block;font:600 .7rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.16em;color:var(--blue);background:var(--blue-l);border:1px solid var(--line);padding:8px 16px;border-radius:8px;margin-bottom:18px}
+.sub{max-width:680px;margin:0 auto 28px;color:var(--muted)}
+@media(max-width:520px){.desk-br{display:none}}
+.btn{display:inline-block;background:var(--green);color:#fff;font:700 1.73rem/1 var(--f-head);text-transform:uppercase;letter-spacing:.06em;padding:27px 51px;border-radius:15px;text-decoration:none;box-shadow:0 9px 27px rgba(31,164,91,.35);transition:background .2s,transform .2s}
+.btn:hover{background:var(--green-d);transform:translateY(-2px)}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+.micro{font-size:1.23rem;color:var(--muted);margin-top:18px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:0 0 28px;padding:0;list-style:none}
+.chips li{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 21px;font-size:1.28rem;font-weight:500;box-shadow:var(--shadow)}
+.hero-chips{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 16px;max-width:640px;margin:0 auto 32px;padding:0;list-style:none}
+.hero-chips li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 22px;font-size:1.05rem;font-weight:700;color:var(--navy);display:flex;align-items:center;justify-content:flex-start;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,0.02);text-align:left}
+@media(max-width:520px){.hero-chips{grid-template-columns:repeat(2,1fr);gap:10px 10px}.hero-chips li{padding:12px 12px;font-size:0.92rem;gap:6px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:20px;text-align:left}
+.card p{color:var(--muted);font-size:.92rem;margin:0}
+.grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:640px){.grid.g3{grid-template-columns:repeat(3,1fr)}.grid.g4{grid-template-columns:repeat(4,1fr)}.grid.g2{grid-template-columns:repeat(2,1fr)}}
+.ico{width:38px;height:38px;border-radius:10px;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;margin-bottom:10px}
+.ico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.num{font:700 1.5rem var(--f-head);color:var(--blue);display:block;margin-bottom:4px}
+.mock{max-width:960px;margin:0 auto 42px}.mock svg{width:100%;height:auto;display:block}
+/* carrossel - marquee auto-scroll */
+.rail{overflow:hidden;display:flex;padding:6px 0 20px;margin:0;user-select:none}
+.rail-track{display:flex;gap:16px;animation:marquee 50s linear infinite;will-change:transform;flex-shrink:0}
+.rail-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.thumb{flex:0 0 285px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:0;text-align:left;overflow:hidden}
+.thumb .tn{font:700 1.6rem var(--f-head);color:var(--blue);line-height:1}
+.thumb h3{font-size:.95rem;margin:4px 0 8px;min-height:2.2em}
+.thumb svg{width:100%;height:auto;background:var(--blue-l);border-radius:6px;display:block}
+.strip{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 40px;margin-top:36px;box-shadow:var(--shadow);text-align:center}
+.strip-label{display:block;font:600 .72rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-bottom:14px}
+.strip-title{display:block;font:700 clamp(1.5rem,4vw,2.4rem)/1.1 var(--f-head);text-transform:uppercase;letter-spacing:.02em;color:var(--navy)}
+.banner{background:var(--navy);color:#fff;border-radius:14px;padding:32px 22px;margin-top:28px}
+.banner h2{color:#fff;margin-bottom:18px}
+.dark{background:var(--navy);color:#fff}.dark h2{color:#fff}
+.eighty{display:grid;gap:24px;align-items:center;text-align:center}
+@media(min-width:720px){.eighty{grid-template-columns:270px 1fr;text-align:left}}
+.big{background:var(--navy);color:#fff;border-radius:16px;padding:32px 20px;text-align:center}
+.big b{display:block;font:700 7.5rem/0.9 var(--f-head);margin-bottom:6px}.big span{font:600 1.05rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:#9DB8E8}
+.eighty .chips{justify-content:flex-start;gap:8px 8px}
+.eighty .chips li{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 13px;font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--navy);box-shadow:0 2px 6px rgba(15,31,61,.04)}
+@media(max-width:719px){.eighty .chips{justify-content:center}}
+.steps{list-style:none;padding:0;margin:0 auto;max-width:520px;display:grid;gap:10px;text-align:left;counter-reset:s}
+.steps li{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-weight:600}
+.steps .ico{margin:0;flex:none;background:var(--navy);color:#fff}
+.price{max-width:460px;margin:0 auto}
+.price .old{color:var(--muted);text-decoration:line-through}
+.price .now{font:700 3.6rem/1 var(--f-head);color:var(--head);margin:6px 0}
+.guar{display:flex;gap:12px;align-items:center;justify-content:center;margin:20px auto 0;max-width:520px;font-size:.92rem;color:var(--muted);text-align:left}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;text-align:left}
+summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";font-size:1.3rem;line-height:1;color:var(--blue)}details[open] summary::after{content:"–"}
+details p{padding:0 18px;color:var(--muted)}
+footer{padding:28px 20px;text-align:center;font-size:.8rem;color:var(--muted);border-top:1px solid var(--line)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.btn{transition:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.plans { display: grid; gap: 24px; grid-template-columns: 1fr; margin-top: 32px; text-align: left; align-items: stretch; }
+@media(min-width: 768px) { .plans { grid-template-columns: 1fr 1fr; } }
+@media(max-width: 767px) { .bonus-grid { grid-template-columns: 1fr!important; } .bonus-grid > div { grid-column: auto!important; } }
+.plan-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); padding: 32px; display: flex; flex-direction: column; }
+.plan-card.pro { background: var(--navy); color: #fff; border: none; }
+.plan-card .tag { display: inline-block; background: #F59E0B; color: #fff; font-weight: 700; font-size: .85rem; padding: 4px 12px; border-radius: 99px; margin-bottom: 16px; align-self: flex-start; }
+.plan-card h3 { font-size: 1.8rem; margin: 0; }
+.plan-card p.subp { color: var(--muted); font-weight: 600; font-size: .9rem; margin: 4px 0 24px; text-transform: uppercase; letter-spacing: .05em; }
+.plan-card.pro h3 { color: #fff; }
+.plan-card.pro p.subp { color: #9DB8E8; }
+.plan-card .price-now { font: 700 3rem/1 var(--f-head); margin: 24px 0 4px; }
+.plan-card.pro .price-now { color: #fff; }
+.plan-card .feat-list { list-style: none; padding: 0; margin: 24px 0 0; }
+.plan-card .feat-list li { display: flex; gap: 10px; margin-bottom: 12px; font-size: .95rem; line-height: 1.4; align-items: flex-start; }
+.plan-card .feat-list li svg { flex: none; width: 20px; height: 20px; margin-top: 2px; }
+.plan-card .feat-list li.yes svg { color: var(--green); }
+.plan-card .feat-list li.no { color: var(--muted); }
+.plan-card .feat-list li.no svg { color: var(--muted); }
+.plan-card.pro .feat-list li.yes svg { color: #10B981; }
+.plan-box { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 8px; padding: 20px; margin-top: 24px; }
+.plan-box h4 { color: #F59E0B; margin: 0 0 16px; font-size: .95rem; font-weight: 700; }
+/* FAQ novo */
+.faq-item { background:#fff; border:1px solid #DCE3EE; border-radius:10px; overflow:hidden; }
+.faq-summary { list-style:none; cursor:pointer; padding:20px 22px; display:flex; justify-content:space-between; align-items:center; gap:16px; font:700 .88rem/1.2 var(--f-head); color:var(--navy); letter-spacing:.06em; text-transform:uppercase; }
+.faq-summary::-webkit-details-marker { display:none; }
+.faq-summary::after { content:""; display:block; flex:none; width:20px; height:20px; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230F1F3D' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") center/contain no-repeat; transition:transform .25s; }
+details[open] .faq-summary::after { transform:rotate(180deg); }
+details[open] .faq-summary::before { display:none; }
+.faq-body { padding:0 22px 20px; color:var(--muted); font-size:.95rem; line-height:1.6; }
+.faq-body p { margin:0; }
+summary::after { display:none; }
+details[open] summary::after { display:none; }
+</style>
+</head>
+<body>
+<svg class="sr" aria-hidden="true"><defs>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/></symbol>
+<symbol id="i-sym" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 116 0c0 2-3 2-3 4M12 17v.5"/></symbol>
+<symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-chk" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9l2 2 4-4M8 16h8"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+<symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12M4 6h.5M4 12h.5M4 18h.5"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+<symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a2 2 0 012 2v14a2 2 0 00-2-2H4zM20 4h-6a2 2 0 00-2 2v14a2 2 0 012-2h6z"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19zM14 7l3 3"/></symbol>
+</defs></svg>
+
+<!-- 1. HERO -->
+<section id="topo" style="padding-top:40px">
+<div class="wrap">
+  <span class="seal"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></svg>Instrumentação organizada para consulta rápida</span>
+  <h1>80 mapas visuais para<br class="desk-br">estudar, revisar e consultar<br class="desk-br">instrumentação industrial</h1>
+  <p class="sub">Tenha instrumentos, sinais, medições, válvulas, controle, P&ID e outros<br class="desk-br">fundamentos da Instrumentação Industrial organizados em mapas visuais de<br class="desk-br">consulta rápida.</p>
+  <ul class="hero-chips">
+    <li>
+      <svg style="width:20px;height:20px;flex:none;color:var(--green)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>80 Mapas Visuais</span>
+    </li>
+    <li>
+      <svg style="width:20px;height:20px;flex:none;color:var(--green)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>Conteúdo Organizado</span>
+    </li>
+    <li>
+      <svg style="width:20px;height:20px;flex:none;color:var(--green)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>Acesso Digital</span>
+    </li>
+    <li>
+      <svg style="width:20px;height:20px;flex:none;color:var(--green)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>Consulte Quando Precisar</span>
+    </li>
+  </ul>
+  <div class="mock rv">
+    <img src="Image_1.png" alt="Mockup Biblioteca Visual" style="width:100%;height:auto;display:block">
+  </div>
+  <a class="btn" href="#comprar">QUERO ADQUIRIR O MATERIAL</a>
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 20px;margin:16px auto 0;width:fit-content;box-shadow:var(--shadow)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span style="font-size:1rem;font-weight:600;color:var(--muted)">Já escolhida por milhares de instrumentistas</span>
+  </div>
+</div>
+</section>
+
+<!-- 2. POR DENTRO -->
+<section style="padding-left:0;padding-right:0">
+<div class="wrap" style="padding:0 20px">
+  <span class="seal">Prova Visual</span>
+  <h2>Veja como é por dentro</h2>
+  <p class="sub">Conheça algumas páginas reais da Biblioteca Visual antes de escolher seu plano.</p>
+</div>
+<div class="rail" aria-label="Prévia dos mapas">
+  <div class="rail-track">
+    <article class="thumb"><img src="pag1.png" alt="Mapa 1" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag2.png" alt="Mapa 2" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag_3.png" alt="Mapa 3" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag4.png" alt="Mapa 4" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag5.png" alt="Mapa 5" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag6.png" alt="Mapa 6" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag7.png" alt="Mapa 7" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag8.png" alt="Mapa 8" style="width:100%;height:auto;display:block"></article>
+    
+    <!-- duplicatas para loop perfeito -->
+    <article class="thumb"><img src="pag1.png" alt="Mapa 1" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag2.png" alt="Mapa 2" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag_3.png" alt="Mapa 3" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag4.png" alt="Mapa 4" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag5.png" alt="Mapa 5" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag6.png" alt="Mapa 6" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag7.png" alt="Mapa 7" style="width:100%;height:auto;display:block"></article>
+    <article class="thumb"><img src="pag8.png" alt="Mapa 8" style="width:100%;height:auto;display:block"></article>
+  </div>
+</div>
+<div class="wrap" style="padding:0 20px">
+  <p style="font:700 1.45rem/1.25 var(--f-head);text-transform:uppercase;letter-spacing:.04em;color:var(--navy);max-width:580px;margin:28px auto 0">Você não precisa imaginar o que vai<br class="desk-br">receber. Está vendo o material por dentro.</p>
+</div>
+</section>
+
+<!-- 3. DOR -->
+<section style="background:var(--card)">
+<div class="wrap">
+  <h2>Cansado de procurar informações de<br class="desk-br">instrumentação em vários lugares?</h2>
+  <p class="sub" style="max-width:760px;margin:0 auto 12px">Instrumentação Industrial envolve instrumentos, sinais, medições, símbolos, diagramas, escalas e<br class="desk-br">diferentes tecnologias.</p>
+  <p class="sub" style="max-width:760px;margin:0 auto 28px">Quando essas informações estão espalhadas em apostilas, vídeos, anotações e diferentes materiais,<br class="desk-br">até uma simples revisão pode consumir mais tempo do que deveria.</p>
+  <div class="grid g3">
+    <div class="card rv"><div class="ico"><svg><use href="#i-search"/></svg></div><h3>Informações espalhadas</h3><p>Cada assunto em um arquivo, em uma pasta, em um lugar diferente.</p></div>
+    <div class="card rv"><div class="ico"><svg><use href="#i-doc"/></svg></div><h3>Apostilas confusas</h3><p>Textos longos que escondem o essencial.</p></div>
+    <div class="card rv"><div class="ico"><svg><use href="#i-sym"/></svg></div><h3>Símbolos que ninguém explica</h3><p>Você vê o esquema, mas não sabe o que cada símbolo significa.</p></div>
+    <div class="card rv"><div class="ico"><svg><use href="#i-img"/></svg></div><h3>Esquemas de baixa qualidade</h3><p>Imagens borradas, cortadas ou impossíveis de ler no celular.</p></div>
+    <div class="card rv"><div class="ico"><svg><use href="#i-clock"/></svg></div><h3>Falta de tempo para estudar</h3><p>A rotina é corrida e o estudo precisa ser rápido.</p></div>
+    <div class="card rv"><div class="ico"><svg><use href="#i-chk"/></svg></div><h3>Difícil revisar antes de prova ou manutenção</h3><p>Sem um resumo visual, a revisão toma horas.</p></div>
+  </div>
+  <div class="strip">
+    <span class="strip-label">Foi para resolver esse problema que criamos a</span>
+    <span class="strip-title">Biblioteca Visual da Instrumentação Industrial</span>
+  </div>
+</div>
+</section>
+
+<!-- 4. SOLUÇÃO -->
+<section>
+<div class="wrap">
+  <span class="seal">A solução</span>
+  <h2>Instrumentação organizada para você visualizar e consultar com mais facilidade</h2>
+  <div class="grid g3" style="margin-top:28px">
+    <div class="card rv"><span class="num">01</span><h3>Estrutura visual clara</h3><p>Cada mapa segue o mesmo padrão. Você encontra o que precisa rápido.</p></div>
+    <div class="card rv"><span class="num">02</span><h3>Conteúdo direto ao ponto</h3><p>Conceitos explicados sem enrolação, em blocos curtos.</p></div>
+    <div class="card rv"><span class="num">03</span><h3>Simbologia padronizada</h3><p>Símbolos ISO 1219 apresentados e explicados.</p></div>
+    <div class="card rv"><span class="num">04</span><h3>Esquemas de circuitos</h3><p>Circuitos desenhados para entender o caminho do fluido e do ar.</p></div>
+    <div class="card rv"><span class="num">05</span><h3>Checklist de manutenção</h3><p>Pontos de verificação e falhas comuns para levar para o dia a dia.</p></div>
+    <div class="card rv"><span class="num">06</span><h3>Consulta no campo</h3><p>PDFs leves, legíveis no celular, onde quer que você esteja.</p></div>
+  </div>
+  <div class="banner">
+    <h2>Não é um material para ler uma vez e esquecer. É uma biblioteca para consultar sempre que precisar.</h2>
+  </div>
+  <div style="margin-top:28px;text-align:center">
+    <a class="btn" href="#comprar">QUERO ADQUIRIR O MATERIAL</a>
+  </div>
+</div>
+</section>
+
+<!-- 5. O QUE VOCÊ RECEBE -->
+<section style="background:var(--card)">
+<div class="wrap">
+  <span style="display:block;font:600 .75rem var(--f-body);text-transform:uppercase;letter-spacing:.2em;color:var(--blue);margin-bottom:14px">O QUE VOCÊ RECEBE</span>
+  <h2>São 80 mapas visuais organizados por assunto</h2>
+  <p class="sub">Uma biblioteca criada para facilitar a localização dos principais conteúdos da<br class="desk-br">Instrumentação Industrial.</p>
+  <div class="eighty">
+    <div class="big"><b>80</b><span>Mapas visuais</span></div>
+    <ul class="chips" style="margin:0">
+      <li>FUNDAMENTOS</li>
+      <li>SINAIS E ESCALAS</li>
+      <li>PRESSÃO</li>
+      <li>TEMPERATURA</li>
+      <li>NÍVEL</li>
+      <li>VAZÃO</li>
+      <li>SENSORES E TRANSMISSORES</li>
+      <li>VÁLVULAS DE CONTROLE</li>
+      <li>CONTROLE DE PROCESSOS</li>
+      <li>P&ID E SIMBOLOGIA</li>
+      <li>AUTOMAÇÃO INDUSTRIAL</li>
+      <li>MEDIÇÃO E CALIBRAÇÃO</li>
+      <li>APLICAÇÕES</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section style="padding:40px 20px">
+<div class="wrap">
+  <img src="Image_2.png" alt="Prévia da Biblioteca Visual" style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:var(--shadow)">
+</div>
+</section>
+
+<!-- 7. COMO FUNCIONA -->
+<section style="background:var(--card);padding:120px 20px">
+<div class="wrap" style="text-align:center">
+  <span style="display:block;font:700 0.75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.2em;color:var(--blue);margin-bottom:14px">Como funciona</span>
+  <h2 style="margin:0 0 18px">Como funciona a Biblioteca Visual?</h2>
+  <p style="color:var(--muted);font-size:1.15rem;max-width:880px;margin:0 auto 56px;line-height:1.5">Cada mapa concentra um assunto e organiza as informações através de diagramas, instrumentos,<br class="desk-br">comparações, fluxos, tabelas e explicações curtas.</p>
+
+  <div style="display:flex;flex-direction:column;gap:0;max-width:680px;margin:0 auto;text-align:left">
+
+    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
+      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">1</div>
+      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Escolha o assunto</span>
+    </div>
+    <div style="width:1px;height:20px;background:var(--line);margin:0 auto"></div>
+
+    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
+      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">2</div>
+      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Abra o mapa</span>
+    </div>
+    <div style="width:1px;height:20px;background:var(--line);margin:0 auto"></div>
+
+    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
+      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">3</div>
+      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Visualize o conceito</span>
+    </div>
+    <div style="width:1px;height:20px;background:var(--line);margin:0 auto"></div>
+
+    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
+      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">4</div>
+      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Revise os principais pontos</span>
+    </div>
+    <div style="width:1px;height:20px;background:var(--line);margin:0 auto"></div>
+
+    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
+      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">5</div>
+      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Volte quando precisar</span>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- 8. USE DO SEU JEITO -->
+<section>
+<div class="wrap">
+  <h2>Use do seu jeito</h2>
+  <div class="grid g4" style="margin-top:24px">
+    <div class="card rv"><div class="ico"><svg><use href="#i-book"/></svg></div><h3>Para estudar</h3><p>Entenda cada conceito com apoio visual.</p></div>
+    <div class="card rv"><div class="ico"><svg><use href="#i-list"/></svg></div><h3>Para revisar</h3><p>Releia os pontos-chave em poucos minutos.</p></div>
+    <div class="card rv"><div class="ico"><svg><use href="#i-phone"/></svg></div><h3>Para consultar</h3><p>Abra no celular, no trabalho ou na bancada.</p></div>
+    <div class="card rv"><div class="ico"><svg><use href="#i-print"/></svg></div><h3>Para imprimir</h3><p>Leve os mapas em papel para a oficina.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section style="background:#fff;padding:72px 0 64px;overflow:hidden">
+  <div class="wrap" style="text-align:center;margin-bottom:40px">
+    <span style="display:inline-block;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.18em;color:#2F6FDB;margin-bottom:14px">Prova Social</span>
+    <h2 style="font-size:clamp(1.9rem,5vw,2.8rem);font-weight:900;color:var(--navy);margin:0 0 14px">O QUE DIZEM QUEM JÁ USA</h2>
+    <p style="color:var(--muted);font-size:1rem;margin:0">Mensagens reais de instrumentistas e estudantes que já receberam a Biblioteca Visual.</p>
+  </div>
+
+  <!-- Carrossel horizontal -->
+  <div style="display:flex;gap:20px;overflow-x:auto;padding:0 40px 24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_1.png" alt="Depoimento WhatsApp 1" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_2.png" alt="Depoimento WhatsApp 2" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_3.png" alt="Depoimento WhatsApp 3" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_4.png" alt="Depoimento WhatsApp 4" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_5.png" alt="Depoimento WhatsApp 5" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_6.png" alt="Depoimento WhatsApp 6" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_7.png" alt="Depoimento WhatsApp 7" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_8.png" alt="Depoimento WhatsApp 8" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_9.png" alt="Depoimento WhatsApp 9" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    
+    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
+      <img src="chat_10.png" alt="Depoimento WhatsApp 10" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+
+  </div>
+</section>
+
+<!-- BÔNUS EXCLUSIVOS -->
+<section style="background:var(--navy);padding:72px 20px;text-align:center">
+<div class="wrap" style="max-width:1040px">
+  <span style="display:inline-block;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.18em;color:#D97706;margin-bottom:18px">Exclusivo do Plano Completo</span>
+  <h2 style="color:#fff;font-size:clamp(1.7rem,4.5vw,2.4rem);max-width:700px;margin:0 auto 48px">Além dos 80 mapas, o Plano Completo libera mais 3 materiais complementares</h2>
+
+  <div class="bonus-grid" style="display:grid;gap:28px;grid-template-columns:repeat(2,1fr);width:100%;margin:0 auto 56px;text-align:left">
+
+    <!-- Card 1 (Linha 1 - Esquerda) -->
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;box-shadow:var(--shadow)">
+      <img src="image_3.png" alt="Checklist de Campo" style="width:100%;height:auto;border-radius:10px;margin-bottom:24px;display:block">
+      <p style="margin:0 0 6px;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.15em;color:#D97706">
+        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Conferir
+      </p>
+      <h3 style="color:#fff;font-size:1.15rem;margin:0 0 8px">Checklist de Campo do Instrumentista</h3>
+      <p style="color:#9DB8E8;font:700 .85rem/1 var(--f-body);text-transform:uppercase;margin:0 0 12px">Saiba o que observar.</p>
+      <p style="color:var(--muted);font-size:.9rem;margin:0;line-height:1.6">Material visual para organizar pontos importantes relacionados à conferência de instrumentos, sinais, identificação, instalação e documentação.</p>
+    </div>
+
+    <!-- Card 2 (Linha 1 - Direita) -->
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;box-shadow:var(--shadow)">
+      <img src="image_4.png" alt="Tabela Mestre" style="width:100%;height:auto;border-radius:10px;margin-bottom:24px;display:block">
+      <p style="margin:0 0 6px;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.15em;color:#D97706">
+        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Consultar
+      </p>
+      <h3 style="color:#fff;font-size:1.15rem;margin:0 0 8px">Tabela Mestre da Instrumentação Industrial</h3>
+      <p style="color:#9DB8E8;font:700 .85rem/1 var(--f-body);text-transform:uppercase;margin:0 0 12px">Tenha as principais referências à mão.</p>
+      <p style="color:var(--muted);font-size:.9rem;margin:0;line-height:1.6">Referências rápidas sobre unidades, grandezas, sinais, escalas, símbolos, abreviações e informações recorrentes da Instrumentação Industrial.</p>
+    </div>
+
+    <!-- Card 3 (Linha 2 - Alinhado à Esquerda) -->
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;grid-column:1;box-shadow:var(--shadow)">
+      <img src="image_5.png" alt="Guia de Falhas" style="width:100%;height:auto;border-radius:10px;margin-bottom:24px;display:block">
+      <p style="margin:0 0 6px;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.15em;color:#D97706">
+        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Investigar
+      </p>
+      <h3 style="color:#fff;font-size:1.15rem;margin:0 0 8px">Guia de Falhas e Diagnóstico em Instrumentação</h3>
+      <p style="color:#9DB8E8;font:700 .85rem/1 var(--f-body);text-transform:uppercase;margin:0 0 12px">Organize seu raciocínio diante de uma falha.</p>
+      <p style="color:var(--muted);font-size:.9rem;margin:0;line-height:1.6">Um guia visual estruturado para relacionar sintoma → possíveis causas → pontos a verificar.</p>
+    </div>
+
+  </div>
+
+  <div style="border-radius:16px;overflow:hidden;margin-bottom:32px">
+    <img src="image_7.png" alt="Todos os materiais" style="width:100%;height:auto;display:block">
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px 36px;margin-bottom:28px">
+    <span style="display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9DB8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      Conteúdo 100% Visual
+    </span>
+    <span style="display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9DB8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Linguagem Direta e Objetiva
+    </span>
+    <span style="display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9DB8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      Para Estudar, Revisar e Consultar
+    </span>
+    <span style="display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9DB8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z"/><path d="M12 8v4l3 3"/></svg>
+      Acesso Imediato
+    </span>
+  </div>
+
+  <p style="color:#fff;font:700 1rem/1.4 var(--f-head);text-transform:uppercase;letter-spacing:.05em;margin:0 0 24px">Todos os 3 materiais complementares estão inclusos no plano <span style="color:#F59E0B">Completo</span></p>
+  <a class="btn" href="#comprar">QUERO ADQUIRIR O MATERIAL</a>
+</div>
+</section>
+
+<!-- PLANOS -->
+<section id="comprar">
+<div class="wrap">
+  <div class="plans">
+    <!-- PLANO BÁSICO -->
+    <div class="plan-card rv">
+      <h3>PLANO BÁSICO</h3>
+      <p class="subp">SOMENTE OS 80 MAPAS VISUAIS</p>
+      <img src="image8.png" alt="Plano Básico" style="width:100%;height:auto;max-width:280px;margin:0 auto 20px;display:block">
+      <div class="price-now">R$ 10,00</div>
+      <p style="margin:0;color:var(--muted);font-size:.9rem">Pagamento único</p>
+      <ul class="feat-list">
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Biblioteca Visual da Instrumentação Industrial</li>
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 80 Mapas Visuais</li>
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Conteúdo organizado por categorias</li>
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Acesso digital</li>
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Consulte pelo celular, tablet ou computador</li>
+      </ul>
+      <div style="height:1px;background:var(--line);margin:24px 0"></div>
+      <ul class="feat-list" style="margin:0">
+        <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Checklist de Campo do Instrumentista</li>
+        <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Tabela Mestre da Instrumentação Industrial</li>
+        <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Guia de Falhas e Diagnóstico em Instrumentação</li>
+      </ul>
+      <a class="btn" href="#comprar" style="margin-top:32px;text-align:center">QUERO O BÁSICO</a>
+    </div>
+
+    <!-- PLANO COMPLETO -->
+    <div class="plan-card pro rv">
+      <span class="tag">⚡ 3X MAIS CONTEÚDO</span>
+      <h3>PLANO COMPLETO</h3>
+      <p class="subp">80 MAPAS + 3 MATERIAIS COMPLEMENTARES</p>
+      <img src="image_7.png" alt="Plano Completo" style="width:100%;height:auto;margin:0 auto 20px;display:block;border-radius:12px">
+      <div class="price-now">R$ 17,00</div>
+      <p style="margin:0;color:#9DB8E8;font-size:.9rem">Pagamento único</p>
+      <ul class="feat-list">
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Biblioteca Visual da Instrumentação Industrial</li>
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 80 Mapas Visuais</li>
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Conteúdo organizado por categorias</li>
+        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Acesso digital</li>
+      </ul>
+      <div class="plan-box">
+        <h4>+ 3 BÔNUS EXCLUSIVOS INCLUSOS</h4>
+        <ul class="feat-list" style="margin:0">
+          <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Checklist de Campo do Instrumentista</li>
+          <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Tabela Mestre da Instrumentação Industrial</li>
+          <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Guia de Falhas e Diagnóstico em Instrumentação</li>
+        </ul>
+      </div>
+      <a class="btn" href="#comprar" style="margin-top:32px;text-align:center">QUERO O COMPLETO</a>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+
+
+<!-- GARANTIA -->
+<section style="background:var(--bg);padding:72px 20px;text-align:center">
+  <div style="max-width:780px;margin:0 auto">
+
+    <!-- Ícone shield em círculo navy -->
+    <div style="width:90px;height:90px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 39px">
+      <svg width="39" height="39" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+    </div>
+
+    <!-- Título -->
+    <h2 style="font:700 clamp(1.96rem,5.6vw,2.8rem)/1.15 var(--f-head);text-transform:uppercase;letter-spacing:.03em;color:var(--navy);margin:0 0 20px">Seu acesso é protegido por garantia</h2>
+
+    <!-- Subtítulo -->
+    <p style="color:var(--muted);font-size:1.36rem;line-height:1.6;margin:0 0 39px">Conheça a Biblioteca Visual por dentro com a segurança do período de garantia da oferta.</p>
+
+    <!-- Badge pill 7 dias -->
+    <div style="display:inline-flex;align-items:center;gap:14px;border:2px solid var(--line);border-radius:99px;padding:20px 39px;background:var(--card);box-shadow:var(--shadow)">
+      <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#1FA45B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span style="font:700 1.4rem/1 var(--f-head);text-transform:uppercase;letter-spacing:.08em;color:var(--navy)">7 Dias de Garantia</span>
+    </div>
+
+    <!-- Rodapé seguro -->
+    <p style="margin:25px 0 0;font-size:1.15rem;color:var(--muted)">Compra protegida e processada em ambiente seguro de checkout.</p>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#fff;padding:64px 20px">
+<div class="wrap" style="max-width:760px">
+  <h2 style="text-align:center;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;color:var(--navy);margin-bottom:36px">DÚVIDAS FREQUENTES</h2>
+  <div class="faq-list" style="display:grid;gap:10px">
+
+    <details class="faq-item">
+      <summary class="faq-summary">O QUE É A BIBLIOTECA VISUAL DA INSTRUMENTAÇÃO INDUSTRIAL?</summary>
+      <div class="faq-body"><p>É uma coleção digital com 80 Mapas Visuais organizando conceitos importantes da Instrumentação Industrial para estudo, revisão e consulta.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-summary">QUANTOS MAPAS EU RECEBO?</summary>
+      <div class="faq-body"><p>Tanto o Plano Básico quanto o Plano Completo incluem os <strong>80 Mapas Visuais</strong> da Biblioteca.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-summary">QUAL A DIFERENÇA ENTRE OS PLANOS?</summary>
+      <div class="faq-body"><p>O Plano Básico inclui a Biblioteca com os 80 Mapas Visuais. O Plano Completo inclui os mesmos 80 mapas e adiciona os três materiais complementares: Checklist de Campo, Tabela Mestre e Guia de Falhas e Diagnóstico.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-summary">OS BÔNUS ESTÃO INCLUSOS NO PLANO BÁSICO?</summary>
+      <div class="faq-body"><p>Não. O Checklist de Campo, a Tabela Mestre e o Guia de Falhas e Diagnóstico são exclusivos do Plano Completo.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-summary">COMO RECEBO O MATERIAL?</summary>
+      <div class="faq-body"><p>Após a confirmação do pagamento, você receberá um e-mail com o link de acesso imediato ao material em PDF.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-summary">POSSO ACESSAR PELO CELULAR?</summary>
+      <div class="faq-body"><p>Sim. Os PDFs são compatíveis com celular, tablet e computador. Você pode salvar no dispositivo e acessar mesmo sem internet.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-summary">SERVE PARA QUEM ESTÁ COMÇANDO?</summary>
+      <div class="faq-body"><p>Sim. Os mapas partem dos fundamentos e avançam até temas mais técnicos como malhas de controle, P&amp;ID e diagnóstico de falhas.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-summary">O MATERIAL SUBSTITUI CURSOS OU PROCEDIMENTOS TÉCNICOS?</summary>
+      <div class="faq-body"><p>Não. O material é educacional e de consulta conceitual. Atividades práticas em ambientes industriais devem seguir normas, procedimentos internos, requisitos de segurança e orientações dos fabricantes.</p></div>
+    </details>
+
+  </div>
+</div>
+</section>
+
+<footer style="background:var(--navy);color:#9DB8E8;padding:40px 20px 28px">
+  <div style="max-width:760px;margin:0 auto;text-align:center">
+    <p style="display:flex;align-items:center;justify-content:center;gap:8px;font:700 .9rem/1 var(--f-head);text-transform:uppercase;color:#fff;letter-spacing:.1em;margin:0 0 20px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      BIBLIOTECA VISUAL DA INSTRUMENTAÇÃO INDUSTRIAL
+    </p>
+    <nav style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;margin-bottom:20px;font-size:.9rem">
+      <a href="#" style="color:#9DB8E8;text-decoration:none">Suporte</a>
+      <a href="#" style="color:#9DB8E8;text-decoration:none">Política de Privacidade</a>
+      <a href="#" style="color:#9DB8E8;text-decoration:none">Termos de Uso</a>
+    </nav>
+    <p style="font-size:.8rem;color:#6A86B0;max-width:600px;margin:0 auto 16px;line-height:1.6">Material educacional e de consulta conceitual. Atividades práticas em ambientes industriais devem seguir normas, procedimentos internos, requisitos de segurança e orientações dos fabricantes.</p>
+    <p style="font-size:.8rem;color:#4A6080;margin:0">© <span id="y">2026</span> Biblioteca Visual da Instrumentação Industrial. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var y=document.getElementById('y');if(y)y.textContent=new Date().getFullYear();
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
