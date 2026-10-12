@@ -1,629 +1,2019 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Biblioteca Visual de Hidráulica e Pneumática — 100 mapas visuais</title>
-<meta name="description" content="100 mapas visuais em PDF para estudar, revisar e consultar hidráulica e pneumática industrial.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  /* PERSONALIZE AQUI */
-  --navy:#0F1F3D; --blue:#2F6FDB; --blue-l:#E6EFFC; --green:#1FA45B; --green-d:#178048; --yellow:#FFC21A;
-  --bg:#F5F7FA; --card:#fff; --text:#1B2538; --muted:#5A6781; --line:#DCE3EE; --head:var(--navy);
-  --f-head:'Barlow Condensed','Arial Narrow',Impact,sans-serif; --f-body:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
-  --shadow:0 4px 18px rgba(15,31,61,.07);
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#09132A;--card:#12213F;--text:#E8EEF8;--muted:#A5B3CC;--line:#263754;--head:#fff;--blue-l:#1A2D52;--shadow:0 4px 18px rgba(0,0,0,.35)}}
-:root[data-theme="dark"]{--bg:#09132A;--card:#12213F;--text:#E8EEF8;--muted:#A5B3CC;--line:#263754;--head:#fff;--blue-l:#1A2D52;--shadow:0 4px 18px rgba(0,0,0,.35)}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:var(--f-head);text-transform:uppercase;color:var(--head);line-height:1.08;margin:0 0 .5em;font-weight:700;letter-spacing:.01em}
-h1{font-size:clamp(2rem,7vw,3.2rem)} h2{font-size:clamp(1.6rem,5vw,2.3rem)} h3{font-size:1.15rem}
-p{margin:0 0 1em}
-section{padding:56px 20px;text-align:center}
-.wrap{max-width:960px;margin:0 auto}
-.seal{display:inline-block;font:600 .7rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.16em;color:var(--blue);background:var(--blue-l);border:1px solid var(--line);padding:8px 16px;border-radius:8px;margin-bottom:18px}
-.sub{max-width:680px;margin:0 auto 28px;color:var(--muted)}
-@media(max-width:520px){.desk-br{display:none}}
-.btn{display:inline-block;background:var(--green);color:#fff;font:700 1.73rem/1 var(--f-head);text-transform:uppercase;letter-spacing:.06em;padding:27px 51px;border-radius:15px;text-decoration:none;box-shadow:0 9px 27px rgba(31,164,91,.35);transition:background .2s,transform .2s}
-.btn:hover{background:var(--green-d);transform:translateY(-2px)}
-:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
-.micro{font-size:1.23rem;color:var(--muted);margin-top:18px}
-.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:0 0 28px;padding:0;list-style:none}
-.chips li{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 21px;font-size:1.28rem;font-weight:500;box-shadow:var(--shadow)}
-.hero-chips{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 16px;max-width:640px;margin:0 auto 32px;padding:0;list-style:none}
-.hero-chips li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 22px;font-size:1.05rem;font-weight:700;color:var(--navy);display:flex;align-items:center;justify-content:flex-start;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,0.02);text-align:left}
-@media(max-width:520px){.hero-chips{grid-template-columns:repeat(2,1fr);gap:10px 10px}.hero-chips li{padding:12px 12px;font-size:0.92rem;gap:6px}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:20px;text-align:left}
-.card p{color:var(--muted);font-size:.92rem;margin:0}
-.grid{display:grid;gap:14px;grid-template-columns:1fr}
-@media(min-width:640px){.grid.g3{grid-template-columns:repeat(3,1fr)}.grid.g4{grid-template-columns:repeat(4,1fr)}.grid.g2{grid-template-columns:repeat(2,1fr)}}
-.ico{width:38px;height:38px;border-radius:10px;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;margin-bottom:10px}
-.ico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.num{font:700 1.5rem var(--f-head);color:var(--blue);display:block;margin-bottom:4px}
-.mock{max-width:960px;margin:0 auto 42px}.mock svg{width:100%;height:auto;display:block}
-/* carrossel - marquee auto-scroll */
-.rail{overflow:hidden;display:flex;padding:6px 0 20px;margin:0;user-select:none}
-.rail-track{display:flex;gap:16px;animation:marquee 50s linear infinite;will-change:transform;flex-shrink:0}
-.rail-track:hover{animation-play-state:paused}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.thumb{flex:0 0 285px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:0;text-align:left;overflow:hidden}
-.thumb .tn{font:700 1.6rem var(--f-head);color:var(--blue);line-height:1}
-.thumb h3{font-size:.95rem;margin:4px 0 8px;min-height:2.2em}
-.thumb svg{width:100%;height:auto;background:var(--blue-l);border-radius:6px;display:block}
-.strip{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 40px;margin-top:36px;box-shadow:var(--shadow);text-align:center}
-.strip-label{display:block;font:600 .72rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-bottom:14px}
-.strip-title{display:block;font:700 clamp(1.5rem,4vw,2.4rem)/1.1 var(--f-head);text-transform:uppercase;letter-spacing:.02em;color:var(--navy)}
-.banner{background:var(--navy);color:#fff;border-radius:14px;padding:32px 22px;margin-top:28px}
-.banner h2{color:#fff;margin-bottom:18px}
-.dark{background:var(--navy);color:#fff}.dark h2{color:#fff}
-.eighty{display:grid;gap:24px;align-items:center;text-align:center}
-@media(min-width:720px){.eighty{grid-template-columns:270px 1fr;text-align:left}}
-.big{background:var(--navy);color:#fff;border-radius:16px;padding:32px 20px;text-align:center}
-.big b{display:block;font:700 7.5rem/0.9 var(--f-head);margin-bottom:6px}.big span{font:600 1.05rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:#9DB8E8}
-.eighty .chips{justify-content:flex-start;gap:8px 8px}
-.eighty .chips li{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 13px;font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--navy);box-shadow:0 2px 6px rgba(15,31,61,.04)}
-@media(max-width:719px){.eighty .chips{justify-content:center}}
-.steps{list-style:none;padding:0;margin:0 auto;max-width:520px;display:grid;gap:10px;text-align:left;counter-reset:s}
-.steps li{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-weight:600}
-.steps .ico{margin:0;flex:none;background:var(--navy);color:#fff}
-.price{max-width:460px;margin:0 auto}
-.price .old{color:var(--muted);text-decoration:line-through}
-.price .now{font:700 3.6rem/1 var(--f-head);color:var(--head);margin:6px 0}
-.guar{display:flex;gap:12px;align-items:center;justify-content:center;margin:20px auto 0;max-width:520px;font-size:.92rem;color:var(--muted);text-align:left}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;text-align:left}
-summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
-summary::after{content:"+";font-size:1.3rem;line-height:1;color:var(--blue)}details[open] summary::after{content:"–"}
-details p{padding:0 18px;color:var(--muted)}
-footer{padding:28px 20px;text-align:center;font-size:.8rem;color:var(--muted);border-top:1px solid var(--line)}
-.rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.btn{transition:none}}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.plans { display: grid; gap: 24px; grid-template-columns: 1fr; margin-top: 32px; text-align: left; align-items: stretch; }
-@media(min-width: 768px) { .plans { grid-template-columns: 1fr 1fr; } }
-@media(max-width: 767px) { .bonus-grid { grid-template-columns: 1fr!important; } .bonus-grid > div { grid-column: auto!important; } }
-.plan-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); padding: 32px; display: flex; flex-direction: column; }
-.plan-card.pro { background: var(--navy); color: #fff; border: none; }
-.plan-card .tag { display: inline-block; background: #F59E0B; color: #fff; font-weight: 700; font-size: .85rem; padding: 4px 12px; border-radius: 99px; margin-bottom: 16px; align-self: flex-start; }
-.plan-card h3 { font-size: 1.8rem; margin: 0; }
-.plan-card p.subp { color: var(--muted); font-weight: 600; font-size: .9rem; margin: 4px 0 24px; text-transform: uppercase; letter-spacing: .05em; }
-.plan-card.pro h3 { color: #fff; }
-.plan-card.pro p.subp { color: #9DB8E8; }
-.plan-card .price-now { font: 700 3rem/1 var(--f-head); margin: 24px 0 4px; }
-.plan-card.pro .price-now { color: #fff; }
-.plan-card .feat-list { list-style: none; padding: 0; margin: 24px 0 0; }
-.plan-card .feat-list li { display: flex; gap: 10px; margin-bottom: 12px; font-size: .95rem; line-height: 1.4; align-items: flex-start; }
-.plan-card .feat-list li svg { flex: none; width: 20px; height: 20px; margin-top: 2px; }
-.plan-card .feat-list li.yes svg { color: var(--green); }
-.plan-card .feat-list li.no { color: var(--muted); }
-.plan-card .feat-list li.no svg { color: var(--muted); }
-.plan-card.pro .feat-list li.yes svg { color: #10B981; }
-.plan-box { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 8px; padding: 20px; margin-top: 24px; }
-.plan-box h4 { color: #F59E0B; margin: 0 0 16px; font-size: .95rem; font-weight: 700; }
-/* FAQ novo */
-.faq-item { background:#fff; border:1px solid #DCE3EE; border-radius:10px; overflow:hidden; }
-.faq-summary { list-style:none; cursor:pointer; padding:20px 22px; display:flex; justify-content:space-between; align-items:center; gap:16px; font:700 .88rem/1.2 var(--f-head); color:var(--navy); letter-spacing:.06em; text-transform:uppercase; }
-.faq-summary::-webkit-details-marker { display:none; }
-.faq-summary::after { content:""; display:block; flex:none; width:20px; height:20px; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230F1F3D' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") center/contain no-repeat; transition:transform .25s; }
-details[open] .faq-summary::after { transform:rotate(180deg); }
-details[open] .faq-summary::before { display:none; }
-.faq-body { padding:0 22px 20px; color:var(--muted); font-size:.95rem; line-height:1.6; }
-.faq-body p { margin:0; }
-summary::after { display:none; }
-details[open] summary::after { display:none; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca Visual de Hidráulica e Pneumática — 100 Mapas Visuais</title>
+  <meta name="description" content="Tenha bombas, cilindros, válvulas, atuadores, compressores, circuitos e outros fundamentos de Hidráulica e Pneumática Industrial organizados em 100 mapas visuais de consulta rápida." />
+  
+  <!-- Open Graph & Social Sharing -->
+  <meta property="og:title" content="Biblioteca Visual de Hidráulica e Pneumática — 100 Mapas Visuais" />
+  <meta property="og:description" content="Tenha bombas, cilindros, válvulas, atuadores, compressores, circuitos e outros fundamentos de Hidráulica e Pneumática Industrial organizados em 100 mapas visuais de consulta rápida." />
+  <meta property="og:image" content="Image_1.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:type" content="website" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Biblioteca Visual de Hidráulica e Pneumática — 100 Mapas Visuais" />
+  <meta name="twitter:description" content="Tenha bombas, cilindros, válvulas, atuadores, compressores, circuitos e outros fundamentos de Hidráulica e Pneumática Industrial organizados em 100 mapas visuais de consulta rápida." />
+  <meta name="twitter:image" content="Image_1.png" />
+  
+  <link rel="image_src" href="Image_1.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & CONTAINMENT GLOBAL (ELIMINA VAZAMENTO DE LARGURA) ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1e293b;
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    section, header, footer {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    :root {
+      /* Identidade Hidráulica & Pneumática: Azul Industrial / Navy */
+      --teal-primary: #2F6FDB;
+      --teal-dark: #1E4E9E;
+      --teal-deep: #0F1F3D;
+      --teal-light: #5A92ED;
+      --teal-pale: #E6EFFC;
+      --teal-soft: #D5E4FA;
+      
+      /* Neutros Técnicos / Chumbo */
+      --slate-900: #0F1F3D;
+      --slate-800: #1E293B;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-400: #94A3B8;
+      --slate-200: #E2E8F0;
+      --slate-100: #F1F5F9;
+      --slate-50:  #F8FAFC;
+      
+      /* Cores de Destaque */
+      --green: #1FA45B;
+      --green-cta: #1FA45B;
+      --green-hover: #178048;
+      --green-glow: rgba(31, 164, 91, 0.35);
+
+      --orange: #D97706;
+      --orange-light: #FEF3C7;
+      
+      /* Layout & Sombras */
+      --container-max: 1140px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 14px -2px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.1);
+      --shadow-xl: 0 20px 40px -8px rgba(47, 111, 219, 0.18);
+    }
+
+    /* ─── TIPOGRAFIA & ESTRUTURA ─────────────────────────────── */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', 'Montserrat', sans-serif;
+      font-weight: 800;
+      line-height: 1.18;
+      color: var(--slate-900);
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--slate-600);
+      font-size: 1rem;
+    }
+
+    .container {
+      max-width: var(--container-max);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-cta);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 20px 44px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px var(--green-glow);
+      transition: all 0.25s ease;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .btn-cta:hover {
+      background: var(--green-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(31, 164, 91, 0.45);
+    }
+
+    /* ─── 1. HERO ────────────────────────────────────────────── */
+    .hero {
+      background: #ffffff;
+      padding: clamp(48px, 6vw, 80px) 0 60px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: var(--teal-pale);
+      border: 1px solid var(--teal-soft);
+      color: var(--teal-dark);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero-tag-icon {
+      color: var(--teal-primary);
+    }
+
+    .hero-headline {
+      font-family: 'Poppins', 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 900;
+      color: var(--slate-900);
+      line-height: 1.18;
+      max-width: 940px;
+      margin: 0 auto 20px;
+      text-transform: uppercase;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.12rem);
+      color: var(--slate-600);
+      max-width: 800px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+
+    .hero-checks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px 28px;
+      margin-bottom: 36px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--slate-800);
+    }
+
+    .check-icon {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .hero-mockup {
+      max-width: 860px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-mockup img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      filter: drop-shadow(0 16px 32px rgba(15, 23, 42, 0.12));
+    }
+
+    .hero-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-size: 0.88rem;
+      color: var(--slate-600);
+      font-weight: 500;
+    }
+
+    /* ─── MARQUEE INFINITO (COM ISOLAMENTO ESTRITO DE LARGURA) ── */
+    .marquee-container {
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      padding: 20px 0;
+      contain: layout paint;
+      isolation: isolate;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      width: max-content;
+      flex-shrink: 0;
+      animation: scrollMarquee 40s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .preview-card {
+      flex-shrink: 0;
+      width: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--slate-200);
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
+      display: flex;
+    }
+
+    .preview-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .preview-card img {
+      height: 480px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .preview-card--chat {
+      width: 224px;
+      display: block;
+    }
+
+    .preview-card--chat img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ─── 2. PROVA VISUAL ────────────────────────────────────── */
+    .prova-visual {
+      background: var(--slate-50);
+      padding: 70px 0;
+      text-align: center;
+      border-top: 1px solid var(--slate-200);
+      border-bottom: 1px solid var(--slate-200);
+      contain: layout paint;
+    }
+
+    .section-tag-simple {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-primary);
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--slate-600);
+      max-width: 680px;
+      margin: 0 auto 36px;
+    }
+
+    .prova-destaque-simple {
+      margin-top: 40px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: var(--slate-800);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #ffffff;
+      border: 1px dashed var(--teal-primary);
+      padding: 20px 28px;
+      border-radius: var(--radius-md);
+      display: inline-block;
+    }
+
+    /* ─── 3. PROBLEMA ────────────────────────────────────────── */
+    .problema {
+      background: #ffffff;
+      padding: 70px 0;
+      text-align: center;
+    }
+
+    .problema h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      max-width: 860px;
+      margin: 0 auto 16px;
+    }
+
+    .problema-text {
+      font-size: 1rem;
+      color: var(--slate-600);
+      max-width: 820px;
+      margin: 0 auto 44px;
+      line-height: 1.65;
+    }
+
+    .dor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 44px;
+      text-align: left;
+    }
+
+    .dor-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .dor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-light);
+    }
+
+    .dor-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .dor-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .dor-card p {
+      font-size: 0.88rem;
+      color: var(--slate-600);
+      line-height: 1.55;
+    }
+
+    .problema-destaque {
+      background: var(--slate-900);
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.5;
+      max-width: 860px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .problema-destaque strong {
+      color: var(--teal-light);
+    }
+
+    /* ─── 4. BENEFÍCIOS ──────────────────────────────────────── */
+    .beneficios {
+      background: var(--slate-50);
+      padding: 70px 0;
+      text-align: center;
+      border-top: 1px solid var(--slate-200);
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      border: 1px solid var(--teal-soft);
+      margin-bottom: 16px;
+    }
+
+    .section-tag--orange {
+      background: #fff7ed;
+      color: #ea580c;
+      border-color: #ffedd5;
+    }
+
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+      text-align: left;
+    }
+
+    .beneficio-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 30px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .beneficio-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--teal-primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .beneficio-num {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--teal-primary);
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .beneficio-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .beneficio-card p {
+      font-size: 0.88rem;
+      color: var(--slate-600);
+      line-height: 1.55;
+    }
+
+    .beneficios-faixa {
+      background: var(--slate-900);
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    .beneficios-faixa span {
+      color: var(--teal-light);
+    }
+
+    /* ─── 5. O QUE VOCÊ RECEBE ───────────────────────────────── */
+    .o-que-recebe {
+      background: #ffffff;
+      padding: 70px 0;
+      border-top: 1px solid var(--slate-200);
+      text-align: center;
+    }
+
+    .recebe-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .recebe-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .numero-destaque {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--slate-900);
+      color: #ffffff;
+      padding: 20px 28px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      width: fit-content;
+    }
+
+    .numero-grande {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--teal-light);
+    }
+
+    .numero-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .categorias-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .categoria-pill {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-full);
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--slate-700);
+      transition: all 0.2s ease;
+    }
+
+    .categoria-pill:hover {
+      background: var(--teal-pale);
+      border-color: var(--teal-light);
+      color: var(--teal-dark);
+    }
+
+    .recebe-mockup img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      filter: drop-shadow(0 12px 28px rgba(15, 23, 42, 0.12));
+    }
+
+    /* ─── 6. COMO FUNCIONA ───────────────────────────────────── */
+    .como-funciona {
+      background: var(--slate-50);
+      padding: 70px 0;
+      text-align: center;
+      border-top: 1px solid var(--slate-200);
+    }
+
+    .passos-lista-vertical {
+      max-width: 640px;
+      margin: 36px auto 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .passo-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .passo-card:hover {
+      transform: translateX(6px);
+      border-color: var(--teal-primary);
+    }
+
+    .passo-num-square {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--slate-900);
+      color: var(--teal-light);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .passo-card h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--slate-900);
+      margin: 0;
+    }
+
+    .uso-titulo {
+      margin-top: 48px;
+      margin-bottom: 24px;
+      font-size: 1.5rem;
+    }
+
+    .uso-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: left;
+    }
+
+    .uso-card-white {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease;
+    }
+
+    .uso-card-white:hover {
+      transform: translateY(-4px);
+      border-color: var(--teal-primary);
+    }
+
+    .uso-card-white h3 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--teal-dark);
+    }
+
+    .uso-card-white p {
+      font-size: 0.84rem;
+      color: var(--slate-600);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ─── 7. PROVA SOCIAL ────────────────────────────────────── */
+    .prova-social {
+      background: #ffffff;
+      padding: 70px 0;
+      text-align: center;
+      border-top: 1px solid var(--slate-200);
+      contain: layout paint;
+    }
+
+    /* ─── 8. BÔNUS EXCLUSIVOS (Layout 2 Colunas + Dark Theme) ────── */
+    .bonus {
+      background: var(--slate-900);
+      padding: 80px 0;
+      text-align: center;
+      border-top: 1px solid var(--slate-800);
+      border-bottom: 1px solid var(--slate-800);
+    }
+
+    .bonus .section-tag-simple {
+      color: #ea580c;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .bonus h2 {
+      color: #ffffff;
+      font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+      margin-bottom: 48px;
+    }
+
+    .bonus-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .bonus-card-new {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .bonus-card-new:hover {
+      transform: translateY(-6px);
+      border-color: rgba(47, 111, 219, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .bonus-img {
+      width: 100%;
+      height: 280px;
+      margin-bottom: 24px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    .bonus-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+    }
+
+    .bonus-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ea580c;
+      margin-bottom: 14px;
+    }
+
+    .bonus-card-new h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .bonus-card-new h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--teal-light);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .bonus-card-new p {
+      font-size: 0.88rem;
+      color: var(--slate-400);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .bonus-bottom {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+      max-width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(10px);
+    }
+
+    .bonus-pacote-img {
+      max-width: 680px;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
+    }
+
+    .bonus-pacote-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      text-transform: uppercase;
+      color: #ffffff;
+      max-width: 680px;
+      letter-spacing: 0.03em;
+    }
+
+    .btn-cta-green {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-cta);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 42px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 8px 24px var(--green-glow);
+      transition: all 0.25s ease;
+    }
+
+    .btn-cta-green:hover {
+      background: var(--green-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(31, 164, 91, 0.45);
+    }
+
+    /* ─── 9. PLANOS DE PREÇO ─────────────────────────────────── */
+    .planos {
+      background: #ffffff;
+      padding: 70px 0;
+      text-align: center;
+      border-top: 1px solid var(--slate-200);
+    }
+
+    .planos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 900px;
+      margin: 40px auto 0;
+      text-align: left;
+    }
+
+    .plano-card {
+      background: #ffffff;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.25s ease;
+    }
+
+    .plano-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .plano-card--destaque {
+      border: 2.5px solid var(--teal-primary);
+      box-shadow: 0 16px 40px rgba(47, 111, 219, 0.16);
+      background: linear-gradient(180deg, #ffffff 0%, var(--teal-pale) 100%);
+    }
+
+    .plano-badges-wrapper {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .plano-badge-blue {
+      background: var(--teal-primary);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+    }
+
+    .plano-badge-orange {
+      background: #ea580c;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+    }
+
+    .plano-nome {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--slate-900);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .plano-desc {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--slate-600);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .plano-img {
+      width: 100%;
+      height: auto;
+      max-height: 180px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      border-radius: var(--radius-sm);
+    }
+
+    .plano-preco {
+      text-align: center;
+      padding: 16px 0;
+      border-top: 1px solid var(--slate-200);
+      border-bottom: 1px solid var(--slate-200);
+      margin-bottom: 24px;
+    }
+
+    .preco-valor {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      color: var(--slate-900);
+      display: block;
+      line-height: 1;
+    }
+
+    .preco-label {
+      font-size: 0.8rem;
+      color: var(--slate-600);
+      font-weight: 600;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .plano-lista {
+      list-style: none;
+      margin-bottom: 20px;
+      padding: 0;
+    }
+
+    .plano-lista li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      padding: 8px 0;
+      color: var(--slate-700);
+      line-height: 1.45;
+    }
+
+    .item-sim {
+      color: var(--slate-800);
+    }
+
+    .item-nao {
+      color: var(--slate-400);
+      text-decoration: line-through;
+    }
+
+    .plano-divider {
+      height: 1px;
+      background: var(--slate-200);
+      margin: 12px 0;
+    }
+
+    .plano-bonus-box {
+      background: rgba(47, 111, 219, 0.08);
+      border: 1px solid var(--teal-soft);
+      border-radius: var(--radius-md);
+      padding: 18px 16px;
+      margin-bottom: 24px;
+    }
+
+    .plano-bonus-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.75rem;
+      color: var(--teal-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .plano-bonus-lista {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .plano-bonus-lista li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.82rem;
+    }
+
+    .bonus-check {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .bonus-content strong {
+      display: block;
+      color: var(--slate-900);
+      margin-bottom: 2px;
+    }
+
+    .bonus-content span {
+      color: var(--slate-600);
+      font-size: 0.78rem;
+    }
+
+    .btn-plano-basico {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--teal-primary);
+      border: 2px solid var(--teal-primary);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      transition: all 0.2s ease;
+      margin-top: auto;
+    }
+
+    .btn-plano-basico:hover {
+      background: var(--teal-primary);
+      color: #ffffff;
+    }
+
+    .btn-plano-completo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-cta);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 24px;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      box-shadow: 0 6px 20px var(--green-glow);
+      transition: all 0.25s ease;
+      margin-top: auto;
+    }
+
+    .btn-plano-completo:hover {
+      background: var(--green-hover);
+      transform: translateY(-2px);
+    }
+
+    .plano-nota {
+      font-size: 0.76rem;
+      color: var(--slate-600);
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .plano-garantia-texto {
+      font-size: 0.75rem;
+      color: var(--slate-600);
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .plano-garantia-texto--dark {
+      color: var(--slate-700);
+    }
+
+    /* ─── 10. GARANTIA ───────────────────────────────────────── */
+    .garantia {
+      background: var(--slate-50);
+      padding: 70px 0;
+      text-align: center;
+      border-top: 1px solid var(--slate-200);
+    }
+
+    .garantia-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--teal-pale);
+      border: 2px solid var(--teal-soft);
+      color: var(--teal-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .garantia-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+      color: var(--slate-900);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .garantia-desc {
+      font-size: 0.98rem;
+      color: var(--slate-600);
+      max-width: 620px;
+      margin: 0 auto 24px;
+    }
+
+    .garantia-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1.5px solid var(--slate-200);
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: var(--slate-800);
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .garantia-footer-text {
+      font-size: 0.8rem;
+      color: var(--slate-600);
+    }
+
+    /* ─── 11. FAQ ────────────────────────────────────────────── */
+    .faq {
+      background: #ffffff;
+      padding: 70px 0;
+      border-top: 1px solid var(--slate-200);
+    }
+
+    .faq h2 {
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--slate-900);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .faq-lista {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-item[open] {
+      border-color: var(--teal-primary);
+    }
+
+    .faq-item summary {
+      padding: 20px 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--slate-900);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--teal-primary);
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-resposta {
+      padding: 0 24px 22px;
+      font-size: 0.92rem;
+      color: var(--slate-600);
+      line-height: 1.7;
+      border-top: 1px solid var(--slate-100);
+      margin-top: 4px;
+      padding-top: 16px;
+    }
+
+    /* ─── 12. FOOTER ─────────────────────────────────────────── */
+    .footer {
+      background: var(--slate-900);
+      color: var(--slate-400);
+      padding: 56px 0 40px;
+      text-align: center;
+      border-top: 1px solid var(--slate-800);
+    }
+
+    .footer-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .footer-nav a {
+      color: var(--slate-400);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-nav a:hover {
+      color: var(--teal-light);
+    }
+
+    .footer-legal {
+      font-size: 0.78rem;
+      line-height: 1.65;
+      color: #64748b;
+      max-width: 780px;
+      margin: 0 auto 24px;
+    }
+
+    .footer-copy {
+      font-size: 0.76rem;
+      color: #475569;
+    }
+
+    /* ─── RESPONSIVIDADE (COPIADA EXATAMENTE DE EXEMPLO.HTML) ─── */
+    @media (max-width: 1024px) {
+      .dor-grid, .beneficios-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .bonus-img {
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dor-grid, .beneficios-grid, .bonus-grid-2, .planos-grid, .recebe-layout {
+        grid-template-columns: 1fr;
+      }
+      .uso-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-checks {
+        flex-direction: column;
+        align-items: center;
+      }
+      .recebe-info {
+        align-items: center;
+        text-align: center;
+      }
+      .categorias-grid {
+        justify-content: center;
+      }
+      .bonus-card-new {
+        padding: 26px 20px;
+      }
+      .bonus-bottom {
+        padding: 28px 20px;
+      }
+      .preview-card img {
+        height: 380px;
+      }
+      .preview-card--chat img {
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .uso-grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .btn-cta, .btn-cta-green {
+        padding: 18px 20px;
+        font-size: 0.88rem;
+        width: 100%;
+      }
+      .bonus-img {
+        height: 200px;
+      }
+      .plano-card {
+        padding: 32px 18px 24px;
+      }
+      .plano-badges-wrapper {
+        gap: 4px;
+        max-width: 95%;
+      }
+      .plano-badge-blue, .plano-badge-orange {
+        font-size: 0.6rem;
+        padding: 4px 10px;
+      }
+      .numero-destaque {
+        padding: 14px 20px;
+      }
+      .numero-grande {
+        font-size: 2.75rem;
+      }
+      .numero-label {
+        font-size: 0.75rem;
+      }
+      .hero-headline {
+        font-size: 1.6rem;
+      }
+      .preview-card img {
+        height: 300px;
+      }
+      .preview-card--chat {
+        width: 180px;
+      }
+      .preview-card--chat img {
+        height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-<svg class="sr" aria-hidden="true"><defs>
-<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></symbol>
-<symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/></symbol>
-<symbol id="i-sym" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 116 0c0 2-3 2-3 4M12 17v.5"/></symbol>
-<symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/></symbol>
-<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-<symbol id="i-chk" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9l2 2 4-4M8 16h8"/></symbol>
-<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
-<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
-<symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
-<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
-<symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12M4 6h.5M4 12h.5M4 18h.5"/></symbol>
-<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
-<symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/></symbol>
-<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a2 2 0 012 2v14a2 2 0 00-2-2H4zM20 4h-6a2 2 0 00-2 2v14a2 2 0 012-2h6z"/></symbol>
-<symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19zM14 7l3 3"/></symbol>
-</defs></svg>
 
-<!-- 1. HERO -->
-<section id="topo" style="padding-top:40px">
-<div class="wrap">
-  <span class="seal"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></svg>Hidráulica e Pneumática organizada para consulta rápida</span>
-  <h1>100 mapas visuais para<br class="desk-br">estudar, revisar e consultar<br class="desk-br">hidráulica e pneumática</h1>
-  <p class="sub">Reunimos bombas, cilindros, válvulas, atuadores, compressores e circuitos em<br class="desk-br">100 mapas visuais fáceis de consultar.</p>
-  <ul class="hero-chips">
-    <li>
-      <svg style="width:20px;height:20px;flex:none;color:var(--green)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      <span>PDF rápido e visual</span>
-    </li>
-    <li>
-      <svg style="width:20px;height:20px;flex:none;color:var(--green)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      <span>Conteúdo Organizado</span>
-    </li>
-    <li>
-      <svg style="width:20px;height:20px;flex:none;color:var(--green)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      <span>Acesso Digital</span>
-    </li>
-    <li>
-      <svg style="width:20px;height:20px;flex:none;color:var(--green)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      <span>Consulte Quando Precisar</span>
-    </li>
-  </ul>
-  <div class="mock rv">
-    <img src="Image_1.png" alt="Mockup Biblioteca Visual" style="width:100%;height:auto;display:block">
-  </div>
-  <a class="btn" href="[LINK DE COMPRA]">QUERO ADQUIRIR O MATERIAL</a>
-  <div style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 20px;margin:16px auto 0;width:fit-content;box-shadow:var(--shadow)">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    <span style="font-size:1rem;font-weight:600;color:var(--muted)">Já escolhida por milhares de profissionais</span>
-  </div>
-</div>
-</section>
+<!-- ============================================================
+     1. HERO
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hero-tag-icon"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></svg>
+      HIDRÁULICA & PNEUMÁTICA ORGANIZADA PARA CONSULTA RÁPIDA
+    </div>
 
-<!-- 2. POR DENTRO -->
-<section style="padding-left:0;padding-right:0">
-<div class="wrap" style="padding:0 20px">
-  <span class="seal">Prova Visual</span>
-  <h2>Veja como é por dentro</h2>
-  <p class="sub">Conheça algumas páginas reais da Biblioteca Visual antes de escolher seu plano.</p>
-</div>
-<div class="rail" aria-label="Prévia dos mapas">
-  <div class="rail-track">
-    <article class="thumb"><img src="pag1.png" alt="5 componentes de um circuito hidráulico" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag2.png" alt="Cilindro de simples e dupla ação" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag_3.png" alt="Válvulas direcionais 4/2 e 5/3" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag4.png" alt="Tipos de bombas hidráulicas" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag5.png" alt="Unidade de conservação" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag6.png" alt="Simbologia ISO 1219" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag7.png" alt="Esquema hidráulico" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag8.png" alt="Manutenção e falhas" style="width:100%;height:auto;display:block"></article>
+    <h1 class="hero-headline">100 MAPAS VISUAIS PARA ESTUDAR, REVISAR E CONSULTAR HIDRÁULICA E PNEUMÁTICA</h1>
     
-    <!-- duplicatas para loop perfeito -->
-    <article class="thumb"><img src="pag1.png" alt="5 componentes de um circuito hidráulico" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag2.png" alt="Cilindro de simples e dupla ação" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag_3.png" alt="Válvulas direcionais 4/2 e 5/3" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag4.png" alt="Tipos de bombas hidráulicas" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag5.png" alt="Unidade de conservação" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag6.png" alt="Simbologia ISO 1219" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag7.png" alt="Esquema hidráulico" style="width:100%;height:auto;display:block"></article>
-    <article class="thumb"><img src="pag8.png" alt="Manutenção e falhas" style="width:100%;height:auto;display:block"></article>
-  </div>
-</div>
-<div class="wrap" style="padding:0 20px">
-  <p style="font:700 1.45rem/1.25 var(--f-head);text-transform:uppercase;letter-spacing:.04em;color:var(--navy);max-width:580px;margin:28px auto 0">Você não precisa imaginar o que vai<br class="desk-br">receber. Está vendo o material por dentro.</p>
-</div>
-</section>
+    <p class="hero-sub">Reunimos bombas, cilindros, válvulas, atuadores, compressores e circuitos em 100 mapas visuais fáceis de consultar.</p>
 
-<!-- 3. DOR -->
-<section style="background:var(--card)">
-<div class="wrap">
-  <h2>Cansado de procurar hidráulica e pneumática<br class="desk-br">em vários lugares?</h2>
-  <p class="sub" style="max-width:760px;margin:0 auto 12px">Hidráulica e Pneumática envolvem circuitos complexos, válvulas, atuadores, símbolos ISO e<br class="desk-br">diferentes diagramas.</p>
-  <p class="sub" style="max-width:760px;margin:0 auto 28px">Quando essas informações estão espalhadas em apostilas confusas e esquemas ruins,<br class="desk-br">até uma simples revisão pode consumir mais tempo do que deveria.</p>
-  <div class="grid g3">
-    <div class="card rv"><div class="ico"><svg><use href="#i-search"/></svg></div><h3>Informações espalhadas</h3><p>Cada assunto em um arquivo, em uma pasta, em um lugar diferente.</p></div>
-    <div class="card rv"><div class="ico"><svg><use href="#i-doc"/></svg></div><h3>Apostilas confusas</h3><p>Textos longos que escondem o essencial.</p></div>
-    <div class="card rv"><div class="ico"><svg><use href="#i-sym"/></svg></div><h3>Símbolos sem explicação</h3><p>Você vê o esquema, mas não sabe o que cada símbolo significa.</p></div>
-    <div class="card rv"><div class="ico"><svg><use href="#i-img"/></svg></div><h3>Esquemas ruins</h3><p>Imagens borradas, cortadas ou difíceis de interpretar.</p></div>
-    <div class="card rv"><div class="ico"><svg><use href="#i-clock"/></svg></div><h3>Falta de tempo</h3><p>A rotina é corrida e o estudo precisa ser direto ao ponto.</p></div>
-    <div class="card rv"><div class="ico"><svg><use href="#i-chk"/></svg></div><h3>Dificuldade de revisar</h3><p>Sem um resumo visual, revisar circuitos e falhas toma horas.</p></div>
-  </div>
-  <div class="strip">
-    <span class="strip-label">Foi para resolver esse problema que criamos a</span>
-    <span class="strip-title">Biblioteca Visual de Hidráulica e Pneumática</span>
-  </div>
-</div>
-</section>
-
-<!-- 4. SOLUÇÃO -->
-<section>
-<div class="wrap">
-  <span class="seal">A solução</span>
-  <h2>Conteúdo organizado para visualizar e consultar com facilidade</h2>
-  <div class="grid g3" style="margin-top:28px">
-    <div class="card rv"><span class="num">01</span><h3>Estrutura visual clara</h3><p>Cada mapa segue o mesmo padrão. Você encontra o que precisa rápido.</p></div>
-    <div class="card rv"><span class="num">02</span><h3>Objetividade</h3><p>Conceitos explicados sem enrolação, em blocos curtos e fáceis de ler.</p></div>
-    <div class="card rv"><span class="num">03</span><h3>Simbologia padronizada</h3><p>Símbolos ISO 1219 apresentados e explicados para facilitar a leitura.</p></div>
-    <div class="card rv"><span class="num">04</span><h3>Circuitos</h3><p>Esquemas desenhados para entender facilmente o caminho do fluido e do ar.</p></div>
-    <div class="card rv"><span class="num">05</span><h3>Checklist de manutenção</h3><p>Pontos de verificação e falhas comuns para o seu dia a dia.</p></div>
-    <div class="card rv"><span class="num">06</span><h3>Consulta no campo</h3><p>PDFs rápidos e legíveis no celular para ajudar nas manutenções.</p></div>
-  </div>
-  <div class="banner">
-    <h2>Não é um material para ler uma vez e esquecer. É uma biblioteca para consultar sempre que precisar.</h2>
-  </div>
-  <div style="margin-top:28px;text-align:center">
-    <a class="btn" href="[LINK DE COMPRA]">QUERO ADQUIRIR O MATERIAL</a>
-  </div>
-</div>
-</section>
-
-<!-- 5. O QUE VOCÊ RECEBE -->
-<section style="background:var(--card)">
-<div class="wrap">
-  <span style="display:block;font:600 .75rem var(--f-body);text-transform:uppercase;letter-spacing:.2em;color:var(--blue);margin-bottom:14px">O QUE VOCÊ RECEBE</span>
-  <h2>São 100 mapas visuais organizados por assunto</h2>
-  <p class="sub">Uma biblioteca criada para facilitar a localização dos principais conteúdos de<br class="desk-br">Hidráulica e Pneumática.</p>
-  <div class="eighty">
-    <div class="big"><b>100</b><span>Mapas visuais</span></div>
-    <ul class="chips" style="margin:0">
-      <li>FUNDAMENTOS</li>
-      <li>BOMLAMBAS HIDRÁULICAS</li>
-      <li>CILINDROS E ATUADORES</li>
-      <li>VÁLVULAS DIRECIONAIS</li>
-      <li>VÁLVULAS DE PRESSÃO E VAZÃO</li>
-      <li>FLUIDOS E FILTRAGEM</li>
-      <li>COMPRESSORES</li>
-      <li>TRATAMENTO DE AR</li>
-      <li>SIMBOLOGIA ISO 1219</li>
-      <li>CIRCUITOS ELETRO-HIDRÁULICOS</li>
-      <li>CIRCUITOS ELETROPNEUMÁTICOS</li>
-      <li>MANUTENÇÃO E FALHAS</li>
-      <li>SEGURANÇA</li>
-    </ul>
-  </div>
-</div>
-</section>
-
-<section style="padding:40px 20px">
-<div class="wrap">
-  <img src="Image_2.png" alt="Prévia da Biblioteca Visual" style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:var(--shadow)">
-</div>
-</section>
-
-<!-- 7. COMO FUNCIONA -->
-<section style="background:var(--card);padding:120px 20px">
-<div class="wrap" style="text-align:center">
-  <span style="display:block;font:700 0.75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.2em;color:var(--blue);margin-bottom:14px">Como funciona</span>
-  <h2 style="margin:0 0 18px">Como funciona a Biblioteca Visual?</h2>
-  <p style="color:var(--muted);font-size:1.15rem;max-width:880px;margin:0 auto 56px;line-height:1.5">Cada mapa concentra um assunto e organiza as informações através de diagramas, componentes,<br class="desk-br">circuitos, tabelas e explicações curtas.</p>
-
-  <div style="display:flex;flex-direction:column;gap:0;max-width:680px;margin:0 auto;text-align:left">
-
-    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
-      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">1</div>
-      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Escolha o assunto</span>
-    </div>
-    <div style="width:1px;height:20px;background:var(--line);margin:0 auto"></div>
-
-    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
-      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">2</div>
-      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Abra o mapa</span>
-    </div>
-    <div style="width:1px;height:20px;background:var(--line);margin:0 auto"></div>
-
-    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
-      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">3</div>
-      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Visualize o conceito</span>
-    </div>
-    <div style="width:1px;height:20px;background:var(--line);margin:0 auto"></div>
-
-    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
-      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">4</div>
-      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Revise os principais pontos</span>
-    </div>
-    <div style="width:1px;height:20px;background:var(--line);margin:0 auto"></div>
-
-    <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 4px 16px rgba(15,31,61,.05)">
-      <div style="flex:none;width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font:700 1.15rem/1 var(--f-body);color:#fff">5</div>
-      <span style="font:700 1.05rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)">Volte quando precisar</span>
-    </div>
-
-  </div>
-</div>
-</section>
-
-<!-- 8. USE DO SEU JEITO -->
-<section>
-<div class="wrap">
-  <h2>Use do seu jeito</h2>
-  <div class="grid g4" style="margin-top:24px">
-    <div class="card rv"><div class="ico"><svg><use href="#i-book"/></svg></div><h3>Para estudar</h3><p>Entenda cada conceito com apoio visual.</p></div>
-    <div class="card rv"><div class="ico"><svg><use href="#i-list"/></svg></div><h3>Para revisar</h3><p>Releia os pontos-chave em poucos minutos.</p></div>
-    <div class="card rv"><div class="ico"><svg><use href="#i-phone"/></svg></div><h3>Para consultar</h3><p>Abra no celular, no trabalho ou na bancada.</p></div>
-    <div class="card rv"><div class="ico"><svg><use href="#i-print"/></svg></div><h3>Para imprimir</h3><p>Leve os mapas em papel para a oficina.</p></div>
-  </div>
-</div>
-</section>
-
-<!-- PROVA SOCIAL -->
-<section style="background:#fff;padding:72px 0 64px;overflow:hidden">
-  <div class="wrap" style="text-align:center;margin-bottom:40px">
-    <span style="display:inline-block;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.18em;color:#2F6FDB;margin-bottom:14px">Prova Social</span>
-    <h2 style="font-size:clamp(1.9rem,5vw,2.8rem);font-weight:900;color:var(--navy);margin:0 0 14px">O QUE DIZEM QUEM JÁ USA</h2>
-    <p style="color:var(--muted);font-size:1rem;margin:0">Mensagens de quem já recebeu a Biblioteca Visual.</p>
-  </div>
-
-  <!-- Carrossel horizontal -->
-  <div style="display:flex;gap:20px;overflow-x:auto;padding:0 40px 24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none">
-
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_1.png" alt="Depoimento WhatsApp 1" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_2.png" alt="Depoimento WhatsApp 2" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_3.png" alt="Depoimento WhatsApp 3" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_4.png" alt="Depoimento WhatsApp 4" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-    
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_5.png" alt="Depoimento WhatsApp 5" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-    
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_6.png" alt="Depoimento WhatsApp 6" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-    
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_7.png" alt="Depoimento WhatsApp 7" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-    
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_8.png" alt="Depoimento WhatsApp 8" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-    
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_9.png" alt="Depoimento WhatsApp 9" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-    
-    <div style="flex:none;width:220px;scroll-snap-align:start;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)">
-      <img src="chat_10.png" alt="Depoimento WhatsApp 10" style="width:100%;height:100%;object-fit:cover;display:block">
-    </div>
-
-  </div>
-</section>
-
-<!-- BÔNUS EXCLUSIVOS -->
-<section style="background:var(--navy);padding:72px 20px;text-align:center">
-<div class="wrap" style="max-width:1040px">
-  <span style="display:inline-block;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.18em;color:#D97706;margin-bottom:18px">Exclusivo do Plano Completo</span>
-  <h2 style="color:#fff;font-size:clamp(1.7rem,4.5vw,2.4rem);max-width:700px;margin:0 auto 48px">Além dos 100 mapas, o Plano Completo libera mais 3 materiais complementares</h2>
-
-  <div class="bonus-grid" style="display:grid;gap:28px;grid-template-columns:repeat(2,1fr);width:100%;margin:0 auto 56px;text-align:left">
-
-    <!-- Card 1 (Linha 1 - Esquerda) -->
-    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;box-shadow:var(--shadow)">
-      <img src="image_3.png" alt="Guia de Simbologia" style="width:100%;height:auto;border-radius:10px;margin-bottom:24px;display:block">
-      <p style="margin:0 0 6px;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.15em;color:#D97706">
-        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Conferir
-      </p>
-      <h3 style="color:#fff;font-size:1.15rem;margin:0 0 8px">Guia Rápido de Simbologia ISO 1219</h3>
-      <p style="color:#9DB8E8;font:700 .85rem/1 var(--f-body);text-transform:uppercase;margin:0 0 12px">Saiba o que observar.</p>
-      <p style="color:var(--muted);font-size:.9rem;margin:0;line-height:1.6">Material visual para identificar de forma rápida os símbolos padrão de válvulas, bombas, cilindros e conexões em diagramas.</p>
-    </div>
-
-    <!-- Card 2 (Linha 1 - Direita) -->
-    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;box-shadow:var(--shadow)">
-      <img src="image_4.png" alt="Tabela de Fluidos" style="width:100%;height:auto;border-radius:10px;margin-bottom:24px;display:block">
-      <p style="margin:0 0 6px;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.15em;color:#D97706">
-        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        Consultar
-      </p>
-      <h3 style="color:#fff;font-size:1.15rem;margin:0 0 8px">Tabela de Filtros e Fluidos</h3>
-      <p style="color:#9DB8E8;font:700 .85rem/1 var(--f-body);text-transform:uppercase;margin:0 0 12px">Tenha as principais referências à mão.</p>
-      <p style="color:var(--muted);font-size:.9rem;margin:0;line-height:1.6">Referências rápidas sobre graus de viscosidade, micragem de filtros e compatibilidade para não errar na hora da troca.</p>
-    </div>
-
-    <!-- Card 3 (Linha 2 - Alinhado à Esquerda) -->
-    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;grid-column:1;box-shadow:var(--shadow)">
-      <img src="image_5.png" alt="Diagnóstico de Circuitos" style="width:100%;height:auto;border-radius:10px;margin-bottom:24px;display:block">
-      <p style="margin:0 0 6px;font:700 .75rem/1 var(--f-body);text-transform:uppercase;letter-spacing:.15em;color:#D97706">
-        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        Investigar
-      </p>
-      <h3 style="color:#fff;font-size:1.15rem;margin:0 0 8px">Diagnóstico de Falhas em Circuitos</h3>
-      <p style="color:#9DB8E8;font:700 .85rem/1 var(--f-body);text-transform:uppercase;margin:0 0 12px">Organize seu raciocínio diante de uma falha.</p>
-      <p style="color:var(--muted);font-size:.9rem;margin:0;line-height:1.6">Um guia visual estruturado para relacionar ruídos, quedas de pressão e vazamentos com as possíveis causas.</p>
-    </div>
-
-  </div>
-
-  <div style="border-radius:16px;overflow:hidden;margin-bottom:32px">
-    <img src="image_7.png" alt="Todos os materiais" style="width:100%;height:auto;display:block">
-  </div>
-
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px 36px;margin-bottom:28px">
-    <span style="display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9DB8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      Conteúdo 100% Visual
-    </span>
-    <span style="display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9DB8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      Linguagem Direta e Objetiva
-    </span>
-    <span style="display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9DB8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-      Para Estudar, Revisar e Consultar
-    </span>
-    <span style="display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9DB8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z"/><path d="M12 8v4l3 3"/></svg>
-      Acesso Imediato
-    </span>
-  </div>
-
-  <p style="color:#fff;font:700 1rem/1.4 var(--f-head);text-transform:uppercase;letter-spacing:.05em;margin:0 0 24px">Todos os 3 materiais complementares estão inclusos no plano <span style="color:#F59E0B">Completo</span></p>
-  <a class="btn" href="[LINK DE COMPRA]">QUERO ADQUIRIR O MATERIAL</a>
-</div>
-</section>
-
-<!-- PLANOS -->
-<section id="comprar">
-<div class="wrap">
-  <div class="plans">
-    <!-- PLANO BÁSICO -->
-    <div class="plan-card rv">
-      <h3>PLANO BÁSICO</h3>
-      <p class="subp">SOMENTE OS 100 MAPAS VISUAIS</p>
-      <img src="image8.png" alt="Plano Básico" style="width:100%;height:auto;max-width:280px;margin:0 auto 20px;display:block">
-      <div class="price-now">[PREÇO]</div>
-      <p style="margin:0;color:var(--muted);font-size:.9rem">Pagamento único</p>
-      <ul class="feat-list">
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Biblioteca Visual de Hidráulica e Pneumática</li>
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 100 Mapas Visuais</li>
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Conteúdo organizado por categorias</li>
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Acesso digital</li>
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Consulte pelo celular, tablet ou computador</li>
-      </ul>
-      <div style="height:1px;background:var(--line);margin:24px 0"></div>
-      <ul class="feat-list" style="margin:0">
-        <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Guia Rápido de Simbologia ISO 1219</li>
-        <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Tabela de Filtros e Fluidos</li>
-        <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Diagnóstico de Falhas em Circuitos</li>
-      </ul>
-      <a class="btn" href="[LINK DE COMPRA]" style="margin-top:32px;text-align:center">QUERO ADQUIRIR O MATERIAL</a>
-    </div>
-
-    <!-- PLANO COMPLETO -->
-    <div class="plan-card pro rv">
-      <span class="tag">⚡ 3X MAIS CONTEÚDO</span>
-      <h3>PLANO COMPLETO</h3>
-      <p class="subp">100 MAPAS + 3 MATERIAIS COMPLEMENTARES</p>
-      <img src="image_7.png" alt="Plano Completo" style="width:100%;height:auto;margin:0 auto 20px;display:block;border-radius:12px">
-      <div class="price-now">[PREÇO]</div>
-      <p style="margin:0;color:#9DB8E8;font-size:.9rem">Pagamento único</p>
-      <ul class="feat-list">
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Biblioteca Visual de Hidráulica e Pneumática</li>
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 100 Mapas Visuais</li>
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Conteúdo organizado por categorias</li>
-        <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Acesso digital</li>
-      </ul>
-      <div class="plan-box">
-        <h4>+ 3 BÔNUS EXCLUSIVOS INCLUSOS</h4>
-        <ul class="feat-list" style="margin:0">
-          <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Guia Rápido de Simbologia ISO 1219</li>
-          <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Tabela de Filtros e Fluidos</li>
-          <li class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Diagnóstico de Falhas em Circuitos</li>
-        </ul>
+    <div class="hero-checks">
+      <div class="check-item">
+        <span class="check-icon">✔</span>
+        <span>PDF rápido e visual</span>
       </div>
-      <a class="btn" href="[LINK DE COMPRA]" style="margin-top:32px;text-align:center">QUERO ADQUIRIR O MATERIAL</a>
-    </div>
-  </div>
-
-</div>
-</section>
-
-
-
-
-<!-- GARANTIA -->
-<section style="background:var(--bg);padding:72px 20px;text-align:center">
-  <div style="max-width:780px;margin:0 auto">
-
-    <!-- Ícone shield em círculo navy -->
-    <div style="width:90px;height:90px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 39px">
-      <svg width="39" height="39" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div class="check-item">
+        <span class="check-icon">✔</span>
+        <span>Conteúdo Organizado</span>
+      </div>
+      <div class="check-item">
+        <span class="check-icon">✔</span>
+        <span>Acesso Digital</span>
+      </div>
+      <div class="check-item">
+        <span class="check-icon">✔</span>
+        <span>Consulte Quando Precisar</span>
+      </div>
     </div>
 
-    <!-- Título -->
-    <h2 style="font:700 clamp(1.96rem,5.6vw,2.8rem)/1.15 var(--f-head);text-transform:uppercase;letter-spacing:.03em;color:var(--navy);margin:0 0 20px">Seu acesso é protegido por garantia</h2>
-
-    <!-- Subtítulo -->
-    <p style="color:var(--muted);font-size:1.36rem;line-height:1.6;margin:0 0 39px">Conheça a Biblioteca Visual por dentro com a segurança do período de garantia da oferta.</p>
-
-    <!-- Badge pill 7 dias -->
-    <div style="display:inline-flex;align-items:center;gap:14px;border:2px solid var(--line);border-radius:99px;padding:20px 39px;background:var(--card);box-shadow:var(--shadow)">
-      <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#1FA45B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span style="font:700 1.4rem/1 var(--f-head);text-transform:uppercase;letter-spacing:.08em;color:var(--navy)">[GARANTIA]</span>
+    <div class="hero-mockup">
+      <img src="Image_1.png" alt="Mockup da Biblioteca Visual de Hidráulica e Pneumática" />
     </div>
 
-    <!-- Rodapé seguro -->
-    <p style="margin:25px 0 0;font-size:1.15rem;color:var(--muted)">Compra protegida e processada em ambiente seguro de checkout.</p>
+    <a href="#planos" class="btn-cta" id="hero-cta">QUERO ADQUIRIR O MATERIAL</a>
 
+    <div class="hero-social">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      Já escolhida por milhares de profissionais
+    </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section style="background:#fff;padding:64px 20px">
-<div class="wrap" style="max-width:760px">
-  <h2 style="text-align:center;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;color:var(--navy);margin-bottom:36px">DÚVIDAS FREQUENTES</h2>
-  <div class="faq-list" style="display:grid;gap:10px">
-
-    <details class="faq-item">
-      <summary class="faq-summary">O QUE É A BIBLIOTECA VISUAL DE HIDRÁULICA E PNEUMÁTICA?</summary>
-      <div class="faq-body"><p>É uma coleção digital com 100 Mapas Visuais organizando conceitos importantes de Hidráulica e Pneumática Industrial para estudo, revisão e consulta.</p></div>
-    </details>
-
-    <details class="faq-item">
-      <summary class="faq-summary">QUANTOS MAPAS EU RECEBO?</summary>
-      <div class="faq-body"><p>Tanto o Plano Básico quanto o Plano Completo incluem os <strong>100 Mapas Visuais</strong> da Biblioteca.</p></div>
-    </details>
-
-    <details class="faq-item">
-      <summary class="faq-summary">QUAL A DIFERENÇA ENTRE OS PLANOS?</summary>
-      <div class="faq-body"><p>O Plano Básico inclui a Biblioteca com os 100 Mapas Visuais. O Plano Completo inclui os mesmos 100 mapas e adiciona os três materiais complementares: Guia Rápido de Simbologia, Tabela de Filtros e Fluidos e Diagnóstico de Falhas em Circuitos.</p></div>
-    </details>
-
-    <details class="faq-item">
-      <summary class="faq-summary">OS BÔNUS ESTÃO INCLUSOS NO PLANO BÁSICO?</summary>
-      <div class="faq-body"><p>Não. Os três guias bônus são exclusivos do Plano Completo.</p></div>
-    </details>
-
-    <details class="faq-item">
-      <summary class="faq-summary">COMO RECEBO O MATERIAL?</summary>
-      <div class="faq-body"><p>Após a confirmação do pagamento, você receberá um e-mail com o link de acesso imediato ao material em PDF.</p></div>
-    </details>
-
-    <details class="faq-item">
-      <summary class="faq-summary">POSSO ACESSAR PELO CELULAR?</summary>
-      <div class="faq-body"><p>Sim. Os PDFs são compatíveis com celular, tablet e computador. Você pode salvar no dispositivo, consultar e imprimir quando precisar.</p></div>
-    </details>
-
-    <details class="faq-item">
-      <summary class="faq-summary">PARA QUEM É INDICADO?</summary>
-      <div class="faq-body"><p>Estudantes de cursos técnicos e engenharia (mecânica, mecatrônica, automação), técnicos de manutenção e profissionais que se preparam para provas ou buscam consultar circuitos na bancada.</p></div>
-    </details>
-
-    <details class="faq-item">
-      <summary class="faq-summary">O MATERIAL SUBSTITUI CURSOS OU PROCEDIMENTOS TÉCNICOS?</summary>
-      <div class="faq-body"><p>Não. O material é educacional e de consulta conceitual. Atividades práticas em ambientes industriais devem seguir normas, procedimentos internos, requisitos de segurança e orientações dos fabricantes.</p></div>
-    </details>
-
+<!-- ============================================================
+     2. PROVA VISUAL
+     ============================================================ -->
+<section class="prova-visual" id="prova-visual">
+  <div class="container">
+    <div class="section-tag-simple">PROVA VISUAL</div>
+    <h2>VEJA COMO É POR DENTRO</h2>
+    <p class="section-sub">Conheça algumas páginas reais da Biblioteca Visual antes de escolher seu plano.</p>
   </div>
-</div>
+
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <!-- Primeira sequência -->
+      <div class="preview-card"><img src="pag1.png" alt="5 componentes de um circuito hidráulico" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag2.png" alt="Cilindro de simples e dupla ação" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag_3.png" alt="Válvulas direcionais 4/2 e 5/3" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag4.png" alt="Tipos de bombas hidráulicas" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag5.png" alt="Unidade de conservação" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag6.png" alt="Simbologia ISO 1219" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag7.png" alt="Esquema hidráulico" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag8.png" alt="Manutenção e falhas" loading="lazy" /></div>
+
+      <!-- Segunda sequência para o loop infinito -->
+      <div class="preview-card"><img src="pag1.png" alt="5 componentes de um circuito hidráulico" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag2.png" alt="Cilindro de simples e dupla ação" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag_3.png" alt="Válvulas direcionais 4/2 e 5/3" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag4.png" alt="Tipos de bombas hidráulicas" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag5.png" alt="Unidade de conservação" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag6.png" alt="Simbologia ISO 1219" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag7.png" alt="Esquema hidráulico" loading="lazy" /></div>
+      <div class="preview-card"><img src="pag8.png" alt="Manutenção e falhas" loading="lazy" /></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="prova-destaque-simple">
+      VOCÊ NÃO PRECISA IMAGINAR O QUE VAI RECEBER. ESTÁ VENDO O MATERIAL POR DENTRO.
+    </div>
+  </div>
 </section>
 
-<footer style="background:var(--navy);color:#9DB8E8;padding:40px 20px 28px">
-  <div style="max-width:760px;margin:0 auto;text-align:center">
-    <p style="display:flex;align-items:center;justify-content:center;gap:8px;font:700 .9rem/1 var(--f-head);text-transform:uppercase;color:#fff;letter-spacing:.1em;margin:0 0 20px">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      BIBLIOTECA VISUAL DE HIDRÁULICA E PNEUMÁTICA
+<!-- ============================================================
+     3. PROBLEMA / DOR
+     ============================================================ -->
+<section class="problema" id="problema">
+  <div class="container">
+    <h2>CANSADO DE PROCURAR HIDRÁULICA E PNEUMÁTICA EM VÁRIOS LUGARES?</h2>
+    <p class="problema-text">
+      Hidráulica e Pneumática envolvem circuitos complexos, válvulas, atuadores, símbolos ISO e diferentes diagramas.<br /><br />
+      Quando essas informações estão espalhadas em apostilas confusas e esquemas ruins, até uma simples revisão pode consumir mais tempo do que deveria.
     </p>
-    <nav style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;margin-bottom:20px;font-size:.9rem">
-      <a href="#" style="color:#9DB8E8;text-decoration:none">Suporte</a>
-      <a href="#" style="color:#9DB8E8;text-decoration:none">Política de Privacidade</a>
-      <a href="#" style="color:#9DB8E8;text-decoration:none">Termos de Uso</a>
+
+    <div class="dor-grid">
+      <div class="dor-card">
+        <div class="dor-icon">🔍</div>
+        <h3>Informações espalhadas</h3>
+        <p>Cada assunto em um arquivo, em uma pasta, em um lugar diferente.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">📄</div>
+        <h3>Apostilas confusas</h3>
+        <p>Textos longos que escondem o essencial e tornam o estudo cansativo.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">⚙</div>
+        <h3>Símbolos sem explicação</h3>
+        <p>Você vê o esquema, mas não sabe o que cada símbolo significa na prática.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">🖼</div>
+        <h3>Esquemas ruins</h3>
+        <p>Imagens borradas, cortadas ou difíceis de interpretar em momentos críticos.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">⏱</div>
+        <h3>Falta de tempo</h3>
+        <p>A rotina é corrida e o estudo precisa ser direto ao ponto.</p>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">🛠</div>
+        <h3>Dificuldade de revisar</h3>
+        <p>Sem um resumo visual estruturado, revisar circuitos e falhas toma horas.</p>
+      </div>
+    </div>
+
+    <div class="problema-destaque">
+      FOI PARA RESOLVER ESSE PROBLEMA QUE CRIAMOS A<br />
+      <strong>BIBLIOTECA VISUAL DE HIDRÁULICA E PNEUMÁTICA INDUSTRIAL</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. BENEFÍCIOS / SOLUÇÃO
+     ============================================================ -->
+<section class="beneficios" id="beneficios">
+  <div class="container">
+    <div class="section-tag section-tag--orange">A SOLUÇÃO</div>
+    <h2>CONTEÚDO ORGANIZADO PARA VISUALIZAR E CONSULTAR COM FACILIDADE</h2>
+
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-num">01</div>
+        <h3>Estrutura visual clara</h3>
+        <p>Cada mapa segue o mesmo padrão. Você encontra o que precisa rápido.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-num">02</div>
+        <h3>Objetividade</h3>
+        <p>Conceitos explicados sem enrolação, em blocos curtos e fáceis de ler.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-num">03</div>
+        <h3>Simbologia padronizada</h3>
+        <p>Símbolos ISO 1219 apresentados e explicados para facilitar a leitura dos diagramas.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-num">04</div>
+        <h3>Circuitos funcionais</h3>
+        <p>Esquemas desenhados para entender facilmente o caminho do fluido e do ar comprimido.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-num">05</div>
+        <h3>Checklist de manutenção</h3>
+        <p>Pontos de verificação e causas de falhas comuns para o seu dia a dia prático.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-num">06</div>
+        <h3>Consulta no campo</h3>
+        <p>PDFs rápidos e legíveis no celular para ajudar nas manutenções e no trabalho de bancada.</p>
+      </div>
+    </div>
+
+    <div class="beneficios-faixa">
+      NÃO É UM MATERIAL PARA LER UMA VEZ E ESQUECER.<br />
+      <span>É UMA BIBLIOTECA PARA CONSULTAR SEMPRE QUE PRECISAR.</span>
+    </div>
+
+    <a href="#planos" class="btn-cta" id="beneficios-cta">QUERO ADQUIRIR O MATERIAL</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. O QUE VOCÊ RECEBE
+     ============================================================ -->
+<section class="o-que-recebe" id="o-que-recebe">
+  <div class="container">
+    <div class="section-tag">O QUE VOCÊ RECEBE</div>
+    <h2>SÃO 100 MAPAS VISUAIS ORGANIZADOS POR ASSUNTO</h2>
+
+    <div class="recebe-layout">
+      <div class="recebe-info">
+        <div class="numero-destaque">
+          <span class="numero-grande">100</span>
+          <span class="numero-label">MAPAS<br/>VISUAIS</span>
+        </div>
+
+        <div class="categorias-grid">
+          <span class="categoria-pill">FUNDAMENTOS</span>
+          <span class="categoria-pill">BOMBAS HIDRÁULICAS</span>
+          <span class="categoria-pill">CILINDROS E ATUADORES</span>
+          <span class="categoria-pill">VÁLVULAS DIRECIONAIS</span>
+          <span class="categoria-pill">VÁLVULAS DE PRESSÃO E VAZÃO</span>
+          <span class="categoria-pill">FLUIDOS E FILTRAGEM</span>
+          <span class="categoria-pill">COMPRESSORES</span>
+          <span class="categoria-pill">TRATAMENTO DE AR</span>
+          <span class="categoria-pill">SIMBOLOGIA ISO 1219</span>
+          <span class="categoria-pill">CIRCUITOS ELETRO-HIDRÁULICOS</span>
+          <span class="categoria-pill">CIRCUITOS ELETROPNEUMÁTICOS</span>
+          <span class="categoria-pill">MANUTENÇÃO E FALHAS</span>
+          <span class="categoria-pill">SEGURANÇA</span>
+        </div>
+      </div>
+
+      <div class="recebe-mockup">
+        <img src="Image_2.png" alt="Biblioteca Visual de Hidráulica e Pneumática em tablet e celular" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. COMO FUNCIONA
+     ============================================================ -->
+<section class="como-funciona" id="como-funciona">
+  <div class="container">
+    <div class="section-tag-simple">COMO FUNCIONA</div>
+    <h2>COMO FUNCIONA A BIBLIOTECA VISUAL?</h2>
+    <p class="section-sub">Cada mapa concentra um assunto e organiza as informações através de diagramas, componentes, circuitos, tabelas e explicações curtas.</p>
+
+    <div class="passos-lista-vertical">
+      <div class="passo-card">
+        <div class="passo-num-square">1</div>
+        <h3>ESCOLHA O ASSUNTO</h3>
+      </div>
+      <div class="passo-card">
+        <div class="passo-num-square">2</div>
+        <h3>ABRA O MAPA</h3>
+      </div>
+      <div class="passo-card">
+        <div class="passo-num-square">3</div>
+        <h3>VISUALIZE O CONCEITO</h3>
+      </div>
+      <div class="passo-card">
+        <div class="passo-num-square">4</div>
+        <h3>REVISE OS PRINCIPAIS PONTOS</h3>
+      </div>
+      <div class="passo-card">
+        <div class="passo-num-square">5</div>
+        <h3>VOLTE QUANDO PRECISAR</h3>
+      </div>
+    </div>
+
+    <h2 class="uso-titulo">USE DO SEU JEITO</h2>
+    <div class="uso-grid-4">
+      <div class="uso-card-white">
+        <h3>PARA ESTUDAR</h3>
+        <p>Entenda cada conceito com forte apoio visual.</p>
+      </div>
+      <div class="uso-card-white">
+        <h3>PARA REVISAR</h3>
+        <p>Releia os pontos-chave de circuitos em poucos minutos.</p>
+      </div>
+      <div class="uso-card-white">
+        <h3>PARA CONSULTAR</h3>
+        <p>Abra no celular, no trabalho ou na bancada.</p>
+      </div>
+      <div class="uso-card-white">
+        <h3>PARA IMPRIMIR</h3>
+        <p>Leve os mapas em papel diretamente para a oficina.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. PROVA SOCIAL
+     ============================================================ -->
+<section class="prova-social" id="prova-social">
+  <div class="container">
+    <div class="section-tag-simple">PROVA SOCIAL</div>
+    <h2>O QUE DIZEM QUEM JÁ USA</h2>
+    <p class="section-sub">Mensagens reais de técnicos, engenheiros e estudantes que já receberam a Biblioteca Visual.</p>
+  </div>
+
+  <div class="marquee-container" style="margin-top: 30px;">
+    <div class="marquee-track">
+      <!-- Primeira sequência -->
+      <div class="preview-card preview-card--chat"><img src="chat_1.png" alt="Depoimento WhatsApp 1" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_2.png" alt="Depoimento WhatsApp 2" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_3.png" alt="Depoimento WhatsApp 3" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_4.png" alt="Depoimento WhatsApp 4" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_5.png" alt="Depoimento WhatsApp 5" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_6.png" alt="Depoimento WhatsApp 6" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_7.png" alt="Depoimento WhatsApp 7" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_8.png" alt="Depoimento WhatsApp 8" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_9.png" alt="Depoimento WhatsApp 9" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_10.png" alt="Depoimento WhatsApp 10" loading="lazy" /></div>
+      
+      <!-- Segunda sequência para o loop contínuo -->
+      <div class="preview-card preview-card--chat"><img src="chat_1.png" alt="Depoimento WhatsApp 1" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_2.png" alt="Depoimento WhatsApp 2" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_3.png" alt="Depoimento WhatsApp 3" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_4.png" alt="Depoimento WhatsApp 4" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_5.png" alt="Depoimento WhatsApp 5" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_6.png" alt="Depoimento WhatsApp 6" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_7.png" alt="Depoimento WhatsApp 7" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_8.png" alt="Depoimento WhatsApp 8" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_9.png" alt="Depoimento WhatsApp 9" loading="lazy" /></div>
+      <div class="preview-card preview-card--chat"><img src="chat_10.png" alt="Depoimento WhatsApp 10" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. BÔNUS EXCLUSIVOS
+     ============================================================ -->
+<section class="bonus" id="bonus">
+  <div class="container">
+    <div class="section-tag-simple" style="color: #ea580c;">EXCLUSIVO DO PLANO COMPLETO</div>
+    <h2>ALÉM DOS 100 MAPAS, O PLANO COMPLETO<br/>LIBERA MAIS 4 MATERIAIS COMPLEMENTARES</h2>
+
+    <div class="bonus-grid-2">
+      <!-- Bônus 1 -->
+      <div class="bonus-card-new">
+        <div class="bonus-img"><img src="image_3.png" alt="Checklist de Campo - Hidráulica e Pneumática" loading="lazy"></div>
+        <div class="bonus-tag">📋 CONFERIR</div>
+        <h3>CHECKLIST DE CAMPO - HIDRÁULICA E PNEUMÁTICA</h3>
+        <h4>CHECKLIST DE MANUTENÇÃO PREVENTIVA PRONTO PARA O DIA A DIA</h4>
+        <p>Roteiro prático com seções organizadas (sistema hidráulico, pneumático, atuadores, válvulas e segurança operacional), pronto para aplicação direta em inspeções de campo e prevenção de paradas.</p>
+      </div>
+
+      <!-- Bônus 2 -->
+      <div class="bonus-card-new">
+        <div class="bonus-img"><img src="image_4.png" alt="Tabela Mestre da Hidráulica e Pneumática" loading="lazy"></div>
+        <div class="bonus-tag">📊 CONSULTAR</div>
+        <h3>TABELA MESTRE DA HIDRÁULICA E PNEUMÁTICA</h3>
+        <h4>REFERÊNCIAS TÉCNICAS E CONVERSÕES SEMPRE À MÃO</h4>
+        <p>Tabelas essenciais com simbologia ISO 1219, conversão de unidades (bar, psi, MPa, L/min, cfm), tipos de componentes hidráulicos/pneumáticos, especificações de óleos (ISO VG) e filtros.</p>
+      </div>
+
+      <!-- Bônus 3 -->
+      <div class="bonus-card-new">
+        <div class="bonus-img"><img src="image_5.png" alt="Guia de Falhas - Hidráulica e Pneumática" loading="lazy"></div>
+        <div class="bonus-tag">🔍 INVESTIGAR</div>
+        <h3>GUIA DE FALHAS - HIDRÁULICA E PNEUMÁTICA</h3>
+        <h4>SINTOMA → POSSÍVEIS CAUSAS → PONTOS DE VERIFICAÇÃO</h4>
+        <p>Diagnóstico visual rápido e estruturado para solucionar perda de pressão, movimento lento de atuadores, ruídos anormais, superaquecimento e vazamentos em circuitos industriais.</p>
+      </div>
+
+      <!-- Bônus 4 -->
+      <div class="bonus-card-new">
+        <div class="bonus-img"><img src="image_formulas.png" alt="Caderno de Fórmulas - Hidráulica e Pneumática" loading="lazy"></div>
+        <div class="bonus-tag">⚡ CALCULAR</div>
+        <h3>CADERNO DE FÓRMULAS - HIDRÁULICA E PNEUMÁTICA</h3>
+        <h4>CÁLCULOS TÉCNICOS E PROJETOS RÁPIDOS</h4>
+        <p>Compêndio direto ao ponto com as principais fórmulas de dimensionamento: força de cilindros (F = P · A), vazão de bombas, potência hidráulica (kW e HP), consumo de ar comprimido e quedas de pressão.</p>
+      </div>
+    </div>
+
+    <div class="bonus-bottom">
+      <img src="image_7.png" alt="Coleção Completa Biblioteca Visual de Hidráulica e Pneumática" class="bonus-pacote-img" loading="lazy">
+      <div class="bonus-pacote-text">TODOS OS 4 MATERIAIS COMPLEMENTARES ESTÃO INCLUSOS NO PLANO COMPLETO</div>
+      <a href="#planos" class="btn-cta-green">QUERO ADQUIRIR O MATERIAL</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. PLANOS DE PREÇO
+     ============================================================ -->
+<section class="planos" id="planos">
+  <div class="container">
+    <div class="section-tag">PLANOS</div>
+    <h2>ESCOLHA SEU PLANO</h2>
+    <p class="section-sub">Comece apenas com os 100 Mapas Visuais ou leve a coleção completa com os 4 materiais complementares.</p>
+
+    <div class="planos-grid">
+
+      <!-- Plano Básico -->
+      <div class="plano-card" id="plano-basico">
+        <div class="plano-nome">PLANO BÁSICO</div>
+        <div class="plano-desc">SOMENTE OS 100 MAPAS VISUAIS</div>
+        <img src="image8.png" alt="Plano Básico" loading="lazy" class="plano-img" />
+        <div class="plano-preco">
+          <span class="preco-valor">R$ 10,00</span>
+          <span class="preco-label">Pagamento único</span>
+        </div>
+        <ul class="plano-lista">
+          <li class="item-sim"><span style="color:var(--green)">✔</span> Biblioteca Visual de Hidráulica e Pneumática</li>
+          <li class="item-sim"><span style="color:var(--green)">✔</span> 100 Mapas Visuais</li>
+          <li class="item-sim"><span style="color:var(--green)">✔</span> Conteúdo organizado por categorias</li>
+          <li class="item-sim"><span style="color:var(--green)">✔</span> Acesso digital</li>
+          <li class="item-sim"><span style="color:var(--green)">✔</span> Consulte pelo celular, tablet ou computador</li>
+        </ul>
+        <div class="plano-divider"></div>
+        <ul class="plano-lista">
+          <li class="item-nao">✗ Checklist de Campo - Hidráulica e Pneumática</li>
+          <li class="item-nao">✗ Tabela Mestre da Hidráulica e Pneumática</li>
+          <li class="item-nao">✗ Guia de Falhas - Hidráulica e Pneumática</li>
+          <li class="item-nao">✗ Caderno de Fórmulas - Hidráulica e Pneumática</li>
+        </ul>
+        <a href="[LINK DE COMPRA]" class="btn-plano-basico" id="cta-basico">QUERO SOMENTE OS 100 MAPAS</a>
+        <div class="plano-nota">
+          ↓ 92% das pessoas aproveitam a oferta completa
+        </div>
+        <div class="plano-garantia-texto">Acesso digital imediato após a confirmação.</div>
+      </div>
+
+      <!-- Plano Completo -->
+      <div class="plano-card plano-card--destaque" id="plano-completo">
+        <div class="plano-badges-wrapper">
+          <div class="plano-badge-blue">MAIS COMPLETO</div>
+          <div class="plano-badge-orange">⚡ 4 BÔNUS INCLUSOS</div>
+        </div>
+        <div class="plano-nome">PLANO COMPLETO</div>
+        <div class="plano-desc">100 MAPAS + 4 MATERIAIS COMPLEMENTARES</div>
+        <img src="image_7.png" alt="Plano Completo" loading="lazy" class="plano-img" />
+        <div class="plano-preco">
+          <span class="preco-valor">R$ 17,90</span>
+          <span class="preco-label">Pagamento único</span>
+        </div>
+        <ul class="plano-lista">
+          <li class="item-sim"><span style="color:var(--green)">✔</span> Biblioteca Visual de Hidráulica e Pneumática</li>
+          <li class="item-sim"><span style="color:var(--green)">✔</span> 100 Mapas Visuais</li>
+          <li class="item-sim"><span style="color:var(--green)">✔</span> Conteúdo organizado por categorias</li>
+          <li class="item-sim"><span style="color:var(--green)">✔</span> Acesso digital</li>
+        </ul>
+        <div class="plano-bonus-box">
+          <div class="plano-bonus-title">+ 4 BÔNUS EXCLUSIVOS INCLUSOS</div>
+          <ul class="plano-bonus-lista">
+            <li>
+              <span class="bonus-check">✔</span>
+              <div class="bonus-content">
+                <strong>Checklist de Campo</strong>
+                <span>Roteiro de inspeção preventiva para bombas, cilindros, válvulas e circuitos.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bonus-check">✔</span>
+              <div class="bonus-content">
+                <strong>Tabela Mestre</strong>
+                <span>Simbologia ISO 1219, conversões (bar, psi, L/min), fluidos e conexões.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bonus-check">✔</span>
+              <div class="bonus-content">
+                <strong>Guia de Falhas</strong>
+                <span>Diagnóstico estruturado: sintoma → causas → pontos a verificar em campo.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bonus-check">✔</span>
+              <div class="bonus-content">
+                <strong>Caderno de Fórmulas</strong>
+                <span>Dimensionamento de força (F = P · A), potência, vazão e ar comprimido.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <a href="[LINK DE COMPRA]" class="btn-plano-completo" id="cta-completo">QUERO O PACOTE COMPLETO</a>
+        <div class="plano-garantia-texto plano-garantia-texto--dark">Acesso digital imediato após a confirmação.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     10. GARANTIA
+     ============================================================ -->
+<section class="garantia" id="garantia">
+  <div class="container" style="text-align: center;">
+    <div class="garantia-icon-wrapper">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+    </div>
+    <h2 class="garantia-title">SEU ACESSO É PROTEGIDO POR GARANTIA</h2>
+    <p class="garantia-desc">Conheça a Biblioteca Visual por dentro com a segurança do período de garantia da oferta.</p>
+    <div class="garantia-button">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      7 DIAS DE GARANTIA
+    </div>
+    <p class="garantia-footer-text">Compra protegida e processada em ambiente seguro de checkout.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     11. FAQ
+     ============================================================ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <h2>Dúvidas frequentes</h2>
+
+    <div class="faq-lista">
+      <details class="faq-item" id="faq-1">
+        <summary>O que é a Biblioteca Visual de Hidráulica e Pneumática?</summary>
+        <div class="faq-resposta">
+          É uma biblioteca digital com 100 mapas visuais sobre Hidráulica e Pneumática Industrial, organizados por assunto, para estudar, revisar e consultar rapidamente. Cada mapa concentra um tema e apresenta as informações de forma visual — através de diagramas, circuitos, tabelas e explicações curtas — sem precisar vasculhar apostilas longas ou vídeos espalhados.
+        </div>
+      </details>
+
+      <details class="faq-item" id="faq-2">
+        <summary>Quantos mapas eu recebo?</summary>
+        <div class="faq-resposta">
+          Você recebe 100 mapas visuais no total, tanto no Plano Básico quanto no Plano Completo, cobrindo bombas, cilindros, atuadores, válvulas, fluidos, compressores, circuitos e manutenção.
+        </div>
+      </details>
+
+      <details class="faq-item" id="faq-3">
+        <summary>Qual a diferença entre os planos?</summary>
+        <div class="faq-resposta">
+          O <strong>Plano Básico (R$ 10,00)</strong> inclui apenas a Biblioteca com os 100 Mapas Visuais. O <strong>Plano Completo (R$ 17,90)</strong> inclui os 100 Mapas Visuais + 4 materiais complementares exclusivos: Checklist de Campo, Tabela Mestre, Guia de Falhas e Caderno de Fórmulas da Hidráulica e Pneumática.
+        </div>
+      </details>
+
+      <details class="faq-item" id="faq-4">
+        <summary>Os bônus estão inclusos no Plano Básico?</summary>
+        <div class="faq-resposta">
+          Não. Os 4 materiais complementares são exclusivos do <strong>Plano Completo</strong>. No Plano Básico você recebe apenas os 100 Mapas Visuais.
+        </div>
+      </details>
+
+      <details class="faq-item" id="faq-5">
+        <summary>Como recebo o material?</summary>
+        <div class="faq-resposta">
+          Após a confirmação do pagamento, você recebe o acesso digital imediatamente por e-mail. O material é entregue em formato digital (PDF) e pode ser baixado e salvo no seu dispositivo para consulta a qualquer momento.
+        </div>
+      </details>
+
+      <details class="faq-item" id="faq-6">
+        <summary>Posso acessar pelo celular?</summary>
+        <div class="faq-resposta">
+          Sim! O material é em formato digital (PDF) e funciona em qualquer dispositivo — computador, tablet ou celular — com qualquer leitor de PDF. Você pode acessar na oficina, na bancada ou em casa.
+        </div>
+      </details>
+
+      <details class="faq-item" id="faq-7">
+        <summary>Serve para quem está começando?</summary>
+        <div class="faq-resposta">
+          Sim! A Biblioteca Visual foi desenvolvida para ser acessível tanto para quem está estudando quanto para profissionais experientes. Os mapas explicam os conceitos de forma visual e direta.
+        </div>
+      </details>
+
+      <details class="faq-item" id="faq-8">
+        <summary>O material substitui normas ou procedimentos técnicos?</summary>
+        <div class="faq-resposta">
+          Não. A Biblioteca Visual é um material educacional e de consulta conceitual. Atividades práticas em ambientes industriais devem sempre seguir normas técnicas (ISO, ABNT), procedimentos internos, requisitos de segurança e orientações dos fabricantes.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     12. FOOTER
+     ============================================================ -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-logo">⚙ Biblioteca Visual de Hidráulica e Pneumática</div>
+    <nav class="footer-nav" aria-label="Links do rodapé">
+      <a href="#" id="link-suporte">Suporte</a>
+      <a href="#" id="link-privacidade">Política de Privacidade</a>
+      <a href="#" id="link-termos">Termos de Uso</a>
     </nav>
-    <p style="font-size:.8rem;color:#6A86B0;max-width:600px;margin:0 auto 16px;line-height:1.6">Material educacional e de consulta conceitual. Atividades práticas em ambientes industriais devem seguir normas, procedimentos internos, requisitos de segurança e orientações dos fabricantes.</p>
-    <p style="font-size:.8rem;color:#4A6080;margin:0">© <span id="y">2026</span> Biblioteca Visual de Hidráulica e Pneumática. Todos os direitos reservados.</p>
+    <p class="footer-legal">Material educacional e de consulta conceitual. Atividades práticas em ambientes industriais devem seguir normas, procedimentos internos, requisitos de segurança e orientações dos fabricantes.</p>
+    <p class="footer-copy">© 2026 Biblioteca Visual de Hidráulica e Pneumática. Todos os direitos reservados.</p>
   </div>
 </footer>
 
-<script>
-(function(){
-  var y=document.getElementById('y');if(y)y.textContent=new Date().getFullYear();
-  var els=document.querySelectorAll('.rv');
-  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return}
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-  els.forEach(function(e){io.observe(e)});
-})();
-</script>
 </body>
 </html>
